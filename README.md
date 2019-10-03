@@ -1,12 +1,26 @@
 # Chess game
 
-Git:
+## Claoses
+
+- Main
+- Piece
+  - Queen - Reina
+  - King - Rey
+  - Bishops - Alfil
+  - Rooks - Torre
+  - Knight - Caballo
+  - Pawns - Peón
+- Square
+- Board
+- Game
+
+##Git:
 
 Comment format
 [FEAT/BUG/TEST] class: Description
 
 
-Eclipse shortcuts:
+##Eclipse shortcuts:
 	
 Hola,
 
@@ -43,7 +57,7 @@ Per escriure la signatura del mètode main: (public staic void main(String[]arg)
 escriure main i fer Ctrl + Espai.
 
 
-Authors:
+##Authors:
 
 Àlex Velasco Cañete de Cárdenas
 

@@ -14,28 +14,29 @@ public class Board {
 	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
 
 	public Board() {
-		
-	}
-	// El tablero se reestablece a la posición original
-	public void resetBoard() { 
 
 	}
-	
-	public void swapTurn() {
-		
+
+	// El tablero se reestablece a la posición original
+	public void resetBoard() {
+
 	}
-	
+
+	public void swapTurn() {
+		this.playerTurn = (this.playerTurn == this.PLAYER_1) ? this.PLAYER_2 : this.PLAYER_1;
+	}
+
 	public int getPlayerTurn() {
 		return playerTurn;
 	}
+
 	public Square getBoard(int row, int col) {
 		return null;
 	}
-	
+
 	// Mover una pieza de un cuadrado a otro
 	public void movePiece(Square sOrigin, Square sDestination) {
-		
-		
+
 	}
 
 }

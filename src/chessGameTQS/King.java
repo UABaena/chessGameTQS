@@ -1,0 +1,10 @@
+package chessGameTQS;
+
+import java.util.List;
+
+public class King extends Piece {
+	public List<Square> getPossibleMoves(Board b) {
+
+		return null;
+	};
+}

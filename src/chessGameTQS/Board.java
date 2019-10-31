@@ -14,7 +14,7 @@ public class Board {
 	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
 
 	public Board() {
-		resetBoard();
+		//resetBoard();
 		playerTurn = PLAYER_1;
 	}
 
@@ -74,8 +74,17 @@ public class Board {
 	}
 
 	// Mover una pieza de un cuadrado a otro
-	public void movePiece(Square sOrigin, Square sDestination) {
-
+	public boolean movePiece(Square sOrigin, Square sDestination) {
+			
+		return false;
 	}
+	
+	public void setSquare(Square sq) {
+		
+		this.board[sq.getRow()][sq.getCol()] = sq;
+		
+		
+		}
+	
 
 }

@@ -139,5 +139,42 @@ class testBoard {
 		assertEquals(expected, result);
 
 	}
+	
+	
+	@Test
+	void testMovePiece() {
+		
+		//Rey, movimiento posible
+		Square s1 = new Square(new King(board.PLAYER_1), 0, 0);
+		Square s2 = new Square(null, 1, 1);
+		boolean result = board.movePiece(s1, s2);
+		assertTrue(result);
+		
+		
+		//Caballo movimiento imposible
+		s1 = new Square(new Knight(board.PLAYER_2), 4, 4);
+		s2 = new Square(null, 5, 5);
+		result = board.movePiece(s1, s2);
+		assertFalse(result);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
 
 }

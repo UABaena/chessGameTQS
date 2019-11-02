@@ -1,5 +1,8 @@
 package chessGameTQS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board {
 
 	// Variables para determinar quien esta jugando
@@ -69,13 +72,25 @@ public class Board {
 		return playerTurn;
 	}
 
-	public Square getBoard(int row, int col) {
+	public Square getSquare(int row, int col) {
 		return board[row][col];
 	}
 
 	// Mover una pieza de un cuadrado a otro
 	public void movePiece(Square sOrigin, Square sDestination) {
 
+	}
+	
+	public ArrayList<Square> getMovements() {
+		
+		return null;
+
+	}
+	
+	
+	public void setSquare(Square square) {
+		
+		
 	}
 
 }

@@ -8,7 +8,7 @@ public class King extends Piece {
 		this.player = player;
 	}
 	
-	public List<Square> getPossibleMoves(Board b) {
+	public List<Square> getPossibleMoves(Board b, int r, int c) {
 
 		return null;
 	};

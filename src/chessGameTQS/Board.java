@@ -81,12 +81,6 @@ public class Board {
 
 	}
 	
-	public ArrayList<Square> getMovements() {
-		
-		return null;
-
-	}
-	
 	
 	public void setSquare(Square square) {
 		

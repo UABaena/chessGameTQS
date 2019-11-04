@@ -33,4 +33,16 @@ public class Square {
 		return (this.piece.equals(s.piece)) && this.row == s.row && this.col == s.col;
 	}
 	
+	public Piece getPiece() {
+		return piece;
+	}
+	
+	public int getCol() {
+		return col;
+	}
+	
+	public int getRow() {
+		return row;
+	}
+	
 }

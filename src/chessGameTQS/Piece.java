@@ -7,7 +7,7 @@ public abstract class Piece {
 	protected int player;
 	protected String name;
 	
-	public abstract List<Square> getPossibleMoves(Board b);
+	public abstract List<Square> getPossibleMoves(Board b, int row, int column);
 	
 	@Override
 	public String toString() {
@@ -20,5 +20,7 @@ public abstract class Piece {
 		Piece p = (Piece) obj;
 		return (this.player == p.player) && this.name.equals(p.name);
 	}
+	
+	
 	
 }

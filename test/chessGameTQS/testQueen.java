@@ -3,6 +3,7 @@ package chessGameTQS;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -49,7 +50,7 @@ class testQueen {
 
 		board.setSquare(sq2);
 		board.setSquare(sq3);
-		board.setSquare(sq3);
+		board.setSquare(sq4);
 		
 		//Pieza de la reina
 		Piece p = board.getSquare(4, 0).getPiece();
@@ -84,14 +85,13 @@ class testQueen {
 
 		expectedResult.add(expectedSq7);
 		expectedResult.add(expectedSq8);
-
-		assertArrayEquals(expectedResult.toArray(), result.toArray()); // Debe dar False
-
+		assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
+		
 		// A�ade una ficha del jugador contrario en la posici�n (6,2)
 
 		Square sq5 = new Square(new King(board.PLAYER_1), 6, 2);
 
-		board.setSquare(sq3);
+		board.setSquare(sq5);
 
 		expectedResult = new ArrayList<Square>();
 		expectedSq1 = board.getSquare(5, 0);

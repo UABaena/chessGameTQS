@@ -21,6 +21,8 @@ public abstract class Piece {
 		return (this.player == p.player) && this.name.equals(p.name);
 	}
 	
-	
+	public int getPlayer() {
+		return player;
+	}
 	
 }

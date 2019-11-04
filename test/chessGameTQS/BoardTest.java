@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class testBoard {
+class BoardTest {
 
 	private Board board;
 
@@ -185,7 +185,7 @@ class testBoard {
 		assertFalse(result);
 		
 		//Comprovar que la posici�n inicial contiene a�n la reina
-		Square expected = new Square(new Knight(board.PLAYER_2), 5, 5);
+		expected = new Square(new Knight(board.PLAYER_2), 5, 5);
 		assertEquals(expected, s1);
 		
 		//Comprovar que la posici�n final sigue vac�a

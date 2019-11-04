@@ -77,8 +77,9 @@ public class Board {
 	}
 
 	// Mover una pieza de un cuadrado a otro
-	public void movePiece(Square sOrigin, Square sDestination) {
-
+	public boolean movePiece(Square sOrigin, Square sDestination) {
+			
+		return true;
 	}
 	
 	public ArrayList<Square> getMovements() {

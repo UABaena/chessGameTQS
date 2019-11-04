@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class testKing {
+class BishopTest {
 
 	@Test
-	void testKingPosition() {
-		
+	void test() {
+		fail("Not yet implemented");
 	}
 
 }

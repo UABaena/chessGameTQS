@@ -9,7 +9,7 @@ public class Pawn extends Piece {
 		this.player = player;
 	}
 
-	public List<Square> getPossibleMoves(Board b) {
+	public List<Square> getPossibleMoves(Board b, int row, int column) {
 
 		return null;
 	};

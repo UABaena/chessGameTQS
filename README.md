@@ -56,8 +56,10 @@ Per escriure la signatura del mètode main: (public staic void main(String[]arg)
 
 escriure main i fer Ctrl + Espai.
 
+## TODO
+- [ ] Transformar el peon al llegar a la ultima casilla. 
 
-##Authors:
+## Authors:
 
 Àlex Velasco Cañete de Cárdenas
 

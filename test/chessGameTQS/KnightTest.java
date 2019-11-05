@@ -2,8 +2,10 @@ package chessGameTQS;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -93,7 +95,7 @@ public class KnightTest {
 		
 		result = p.getPossibleMoves(board, 2, 5);
 		
-		assertArrayEquals(expectedResult.toArray(), result.toArray()); //Debe ser un assert que sea false
+		assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
 		
 		
 		//Coloca piezas del jugador contrario en los movimientos posibles del caballo

@@ -17,7 +17,7 @@ public class Board {
 	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
 
 	public Board() {
-		resetBoard();
+		// resetBoard();
 		playerTurn = PLAYER_1;
 	}
 
@@ -81,17 +81,11 @@ public class Board {
 			
 		return true;
 	}
-	
-	public ArrayList<Square> getMovements() {
-		
-		return null;
 
-	}
-	
-	
-	public void setSquare(Square square) {
-		
-		
+	public void setSquare(Square sq) {
+
+		this.board[sq.getRow()][sq.getCol()] = sq;
+
 	}
 
 }

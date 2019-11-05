@@ -5,7 +5,7 @@ import java.util.List;
 public class Pawn extends Piece {
 
 	public Pawn(int player) {
-		this.name = "Peón";
+		this.name = "Peon";
 		this.player = player;
 	}
 

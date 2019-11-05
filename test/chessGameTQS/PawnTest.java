@@ -71,9 +71,9 @@ class testKing {
 
             expectedResult = new ArrayList<Square>();
 
-            Square expectedSq7 = board.getSquare(1, 4);
+            Square expectedSq3 = board.getSquare(1, 4);
 
-            expectedResult.add(expectedSq7);
+            expectedResult.add(expectedSq3);
 
             p = board.getSquare(1, 3).getPiece();
 
@@ -85,13 +85,14 @@ class testKing {
 
 		    Square sq5 = new Square(new Pawn(board.PLAYER_1), 2, 4);
             board.setSquare(sq5);
+            
             expectedResult = new ArrayList<Square>();
 
-            expectedSq7 = board.getSquare(1, 4);
-            Square expectedSq8 = board.getSquare(2, 4);
+            Square expectedSq4 = board.getSquare(1, 4);
+            Square expectedSq5 = board.getSquare(2, 4);
 
-            expectedResult.add(expectedSq7);
-            expectedResult.add(expectedSq8);
+            expectedResult.add(expectedSq4);
+            expectedResult.add(expectedSq5);
 
 
             result = p.getPossibleMoves(board, 1, 3);
@@ -101,8 +102,14 @@ class testKing {
         // El peon tiene una pieza delante e intenta avanzar (ESTE ASSERT DEBE SER FALSE)
 
             Square sq6 = new Square(new Pawn(board.PLAYER_1), 1, 4);
-        
+            board.setSquare(sq6);
+            
             expectedResult = new ArrayList<Square>();
+            
+            Square expectedSq6 = board.getSquare( 1,  4);
+            result = p.getPossibleMoves(board, 1, 3);
+            
+            assertArrayEquals(expectedResult.toArray(), result.toArray()); //modificar el assert para que de OK si es false
             
 
 	}

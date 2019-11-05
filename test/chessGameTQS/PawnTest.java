@@ -4,12 +4,13 @@ package chessGameTQS;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class testKing {
+class PawnTest {
 
 	private Board board;
 
@@ -109,7 +110,7 @@ class testKing {
             Square expectedSq6 = board.getSquare( 1,  4);
             result = p.getPossibleMoves(board, 1, 3);
             
-            assertArrayEquals(expectedResult.toArray(), result.toArray()); //modificar el assert para que de OK si es false
+            assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
             
 
 	}

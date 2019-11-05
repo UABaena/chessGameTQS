@@ -3,6 +3,7 @@ package chessGameTQS;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -80,7 +81,7 @@ class KingTest {
 		expectedResult.add(expectedSq7);
 		expectedResult.add(expectedSq8);
 
-		assertArrayEquals(expectedResult.toArray(), result.toArray()); // Debe dar False
+		assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
 
 		// Add una ficha del jugador contrario en la posicion (5,0)
 

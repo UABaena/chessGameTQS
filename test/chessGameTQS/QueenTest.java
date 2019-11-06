@@ -72,6 +72,10 @@ class QueenTest {
 		expectedResult.add(expectedSq4);
 		expectedResult.add(expectedSq5);
 		expectedResult.add(expectedSq6);
+		
+		System.out.println(result);
+		System.out.println(expectedResult);
+		
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 

@@ -48,14 +48,20 @@ public class Pawn extends Piece {
 			//Comprovar si puede comer en diagonal
 			if (row < b.NUM_ROWS - 1 && col < b.NUM_ROWS - 1) {
 				Square s = b.getSquare(row + 1, col + 1);
-				if (s.getPiece().getPlayer() == b.PLAYER_2) {// Mirar si puede comer en diagonal
-					list.add(s);
-				}
+				
+				if (s.getPiece() != null) {
+					if (s.getPiece().getPlayer() == b.PLAYER_2) {// Mirar si puede comer en diagonal
+						list.add(s);
+					}
+					}
 			}
 			if (row < b.NUM_ROWS - 1 && col > 0) {
 				Square s = b.getSquare(row + 1, col - 1);
+				
+				if (s.getPiece() != null) {
 				if (s.getPiece().getPlayer() == b.PLAYER_2) {// Mirar si puede comer en diagonal
 					list.add(s);
+				}
 				}
 			}
 
@@ -91,14 +97,26 @@ public class Pawn extends Piece {
 			//Comprovar si puede comer en diagonal
 			if (row > 0 && col < b.NUM_ROWS - 1) {
 				Square s = b.getSquare(row - 1, col + 1);
-				if (s.getPiece().getPlayer() == b.PLAYER_1) {// Mirar si puede comer en diagonal
-					list.add(s);
+				Piece p = s.getPiece();
+				
+				if (p != null) {
+					
+					if (s.getPiece().getPlayer() == b.PLAYER_1) {// Mirar si puede comer en diagonal
+						list.add(s);
+					}
 				}
+				
+				
 			}
 			if (row > 0 && col > 0) {
 				Square s = b.getSquare(row - 1, col - 1);
-				if (s.getPiece().getPlayer() == b.PLAYER_1) {// Mirar si puede comer en diagonal
-					list.add(s);
+				Piece p = s.getPiece();
+				
+				if (p != null) {
+					
+					if (s.getPiece().getPlayer() == b.PLAYER_1) {// Mirar si puede comer en diagonal
+						list.add(s);
+					}
 				}
 			}
 		}

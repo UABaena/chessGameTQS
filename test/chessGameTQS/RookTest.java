@@ -57,14 +57,16 @@ public class RookTest {
 		
 		
 		List<Square> result = p.getPossibleMoves(board, 4, 0);
+		
+		
 
 		// Crea una lista de las casillas a la que puede ir la pieza inicial
 
 		List<Square> expectedResult = new ArrayList<Square>();
-		Square expectedSq1 = board.getSquare(0, 0);
-		Square expectedSq2 = board.getSquare(1, 0);
-		Square expectedSq3 = board.getSquare(2, 0);
-		Square expectedSq4 = board.getSquare(3, 0);
+		Square expectedSq1 = board.getSquare(3, 0);
+		Square expectedSq2 = board.getSquare(2, 0);
+		Square expectedSq3 = board.getSquare(1, 0);
+		Square expectedSq4 = board.getSquare(0, 0);
 		Square expectedSq5 = board.getSquare(5, 0);
 		Square expectedSq6 = board.getSquare(6, 0);
 		Square expectedSq7 = board.getSquare(4, 1);
@@ -77,9 +79,14 @@ public class RookTest {
 		expectedResult.add(expectedSq6);
 		expectedResult.add(expectedSq7);
 		
-	
+		
+
+		
+		
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
+		
+		
 
 		// Add una casilla donde NO puede ir la pieza a la lista de movimientos
 		// Esperados y se realiza la comprobacion
@@ -102,10 +109,10 @@ public class RookTest {
 
 		expectedResult = new ArrayList<Square>();
 		
-		expectedSq1 = board.getSquare(0, 0);
-		expectedSq2 = board.getSquare(1, 0);
-		expectedSq3 = board.getSquare(2, 0);
-		expectedSq4 = board.getSquare(3, 0);
+		expectedSq1 = board.getSquare(3, 0);
+		expectedSq2 = board.getSquare(2, 0);
+		expectedSq3 = board.getSquare(1, 0);
+		expectedSq4 = board.getSquare(0, 0);
 		expectedSq5 = board.getSquare(5, 0);
 		expectedSq6 = board.getSquare(6, 0);
 		expectedSq7 = board.getSquare(4, 1);
@@ -127,9 +134,14 @@ public class RookTest {
 
 		result = new ArrayList<Square>();
 		result = p.getPossibleMoves(board, 4, 0);
+		
+		System.out.println(result);
+		System.out.println(expectedResult);
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
-
+		
+	
+	
 	}
 
 }

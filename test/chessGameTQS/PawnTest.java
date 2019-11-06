@@ -39,7 +39,7 @@ class PawnTest {
 		// movimientos en funci�n de las fichas
 
 		/* El objeto SQ1 siempre va a ser el que vamos a intentar mover */
-		Square sq1 = new Square(new Pawn(board.PLAYER_2), 1, 1);
+		Square sq1 = new Square(new Pawn(board.PLAYER_1), 1, 1);
 
 		board.setSquare(sq1);
 
@@ -57,58 +57,66 @@ class PawnTest {
 		
         
             List<Square> expectedResult = new ArrayList<Square>();
-            Square expectedSq1 = board.getSquare(1, 2);
-            Square expectedSq2 = board.getSquare(1, 3);
+            Square expectedSq1 = board.getSquare(2, 1);
+            Square expectedSq2 = board.getSquare(3, 1);
 
             expectedResult.add(expectedSq1);
             expectedResult.add(expectedSq2);
+            
+        	
+
 
             assertArrayEquals(expectedResult.toArray(), result.toArray());
 
 		//El peon se encuentra en una posicion no inicial(Solo se puede mover una casilla)
-            Square sq10 = new Square(new Pawn(board.PLAYER_2), 1, 3);
+            Square sq10 = new Square(new Pawn(board.PLAYER_1),3, 1);
 
             board.setSquare(sq10);
 
             expectedResult = new ArrayList<Square>();
 
-            Square expectedSq3 = board.getSquare(1, 4);
+            Square expectedSq3 = board.getSquare(4, 1);
 
             expectedResult.add(expectedSq3);
 
-            p = board.getSquare(1, 3).getPiece();
+            p = board.getSquare(3, 1).getPiece();
 
-            result = p.getPossibleMoves(board, 1, 3);
+            result = p.getPossibleMoves(board, 3, 1);
+            
+           
 
             assertArrayEquals(expectedResult.toArray(), result.toArray()); 
 
 		// El peon tiene la posibilidad de comerse a una pieza enemiga y avanzar
 
-		    Square sq5 = new Square(new Pawn(board.PLAYER_1), 2, 4);
+		    Square sq5 = new Square(new Pawn(board.PLAYER_2), 4, 2); //pieza enemiga
             board.setSquare(sq5);
             
             expectedResult = new ArrayList<Square>();
 
-            Square expectedSq4 = board.getSquare(1, 4);
-            Square expectedSq5 = board.getSquare(2, 4);
+            Square expectedSq4 = board.getSquare(4, 1);
+            Square expectedSq5 = board.getSquare(4, 2);
 
             expectedResult.add(expectedSq4);
             expectedResult.add(expectedSq5);
 
-
-            result = p.getPossibleMoves(board, 1, 3);
+            
+            result = p.getPossibleMoves(board, 3, 1);
+            
+            System.out.println(result);
+    		System.out.println(expectedResult);
 
 		    assertArrayEquals(expectedResult.toArray(), result.toArray());
 
         // El peon tiene una pieza delante e intenta avanzar (ESTE ASSERT DEBE SER FALSE)
 
-            Square sq6 = new Square(new Pawn(board.PLAYER_1), 1, 4);
+            Square sq6 = new Square(new Pawn(board.PLAYER_1), 4, 1);
             board.setSquare(sq6);
             
             expectedResult = new ArrayList<Square>();
             
-            Square expectedSq6 = board.getSquare( 1,  4);
-            result = p.getPossibleMoves(board, 1, 3);
+            Square expectedSq6 = board.getSquare( 4,  1);
+            result = p.getPossibleMoves(board, 3, 1);
             
             assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
             

@@ -42,10 +42,15 @@ class BoardTest {
 
 	@Test
 	void testInitialPosition() {
+		
+		board.resetBoard(); //Inicializamos fichas
 
 		// Primera linea Blancas
 		Square expected = new Square(new Rook(board.PLAYER_1), 0, 0);
 		Square result = board.getSquare(0, 0);
+		
+		System.out.println(expected);
+		System.out.println(result);
 
 		assertEquals(expected, result);
 

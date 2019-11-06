@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class testKing {
+class BishopTest {
 
 	private Board board;
 
@@ -61,10 +61,10 @@ class testKing {
 		// Crea una lista de las casillas a la que puede ir la pieza inicial
 
 		List<Square> expectedResult = new ArrayList<Square>();
-		Square expectedSq1 = board.getSquare(7, 2);
-		Square expectedSq2 = board.getSquare(5, 2);
-        Square expectedSq4 = board.getSquare(5, 4);
-        Square expectedSq5 = board.getSquare(4, 5);
+		Square expectedSq1 = board.getSquare(5, 2);
+		Square expectedSq2 = board.getSquare(5, 4);
+        Square expectedSq4 = board.getSquare(4, 5);
+        Square expectedSq5 = board.getSquare(7, 2);
 
 
 		expectedResult.add(expectedSq1);
@@ -72,7 +72,8 @@ class testKing {
 		expectedResult.add(expectedSq4);
         expectedResult.add(expectedSq5);
 		
-	
+        
+        
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 
@@ -95,17 +96,21 @@ class testKing {
 
 		expectedResult = new ArrayList<Square>();
 		expectedSq1 = board.getSquare(5, 2);
-		expectedSq2 = board.getSquare(7, 2);
+		expectedSq2 = board.getSquare(5, 4);
         Square expectedSq3 = board.getSquare(4, 5); // ficha del jugador contrario
+        expectedSq4 = board.getSquare(7, 2);
 	
 
 		expectedResult.add(expectedSq1);
 		expectedResult.add(expectedSq2);
         expectedResult.add(expectedSq3);
+        expectedResult.add(expectedSq4);
 
 
 		result = new ArrayList<Square>();
 		result = p.getPossibleMoves(board, 6, 3);
+		System.out.println(result);
+		System.out.println(expectedResult);
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 

@@ -3,12 +3,13 @@ package chessGameTQS;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class testQueen {
+class QueenTest {
 
 	private Board board;
 
@@ -49,12 +50,10 @@ class testQueen {
 
 		board.setSquare(sq2);
 		board.setSquare(sq3);
-		board.setSquare(sq3);
+		board.setSquare(sq4);
 		
 		//Pieza de la reina
 		Piece p = board.getSquare(4, 0).getPiece();
-		
-		
 		List<Square> result = p.getPossibleMoves(board, 4, 0);
 
 		// Crea una lista de las casillas a la que puede ir la pieza inicial
@@ -73,10 +72,14 @@ class testQueen {
 		expectedResult.add(expectedSq4);
 		expectedResult.add(expectedSq5);
 		expectedResult.add(expectedSq6);
+		
+		System.out.println(result);
+		System.out.println(expectedResult);
+		
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 
-		// A�ade dos casillas donde NO puede ir la pieza a la lista de movimientos
+		// Add dos casillas donde NO puede ir la pieza a la lista de movimientos
 		// Esperados y se realiza la comprobaci�n
 
 		Square expectedSq7 = board.getSquare(3, 1);
@@ -84,14 +87,13 @@ class testQueen {
 
 		expectedResult.add(expectedSq7);
 		expectedResult.add(expectedSq8);
-
-		assertArrayEquals(expectedResult.toArray(), result.toArray()); // Debe dar False
-
-		// A�ade una ficha del jugador contrario en la posici�n (6,2)
+		assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
+		
+		// Add una ficha del jugador contrario en la posici�n (6,2)
 
 		Square sq5 = new Square(new King(board.PLAYER_1), 6, 2);
 
-		board.setSquare(sq3);
+		board.setSquare(sq5);
 
 		expectedResult = new ArrayList<Square>();
 		expectedSq1 = board.getSquare(5, 0);

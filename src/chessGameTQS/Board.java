@@ -78,8 +78,8 @@ public class Board {
 
 	// Mover una pieza de un cuadrado a otro
 	public boolean movePiece(Square sOrigin, Square sDestination) {
-
-		return false;
+			
+		return true;
 	}
 
 	public void setSquare(Square sq) {

@@ -244,6 +244,6 @@ public class Knight extends Piece {
 		
 		
 
-		return null;
+		return list;
 	};
 }

@@ -49,8 +49,7 @@ class BoardTest {
 		Square expected = new Square(new Rook(board.PLAYER_1), 0, 0);
 		Square result = board.getSquare(0, 0);
 		
-		System.out.println(expected);
-		System.out.println(result);
+
 
 		assertEquals(expected, result);
 
@@ -170,7 +169,16 @@ class BoardTest {
 		//Ejecutando con el rey un mivimiento posible
 		Square s1 = new Square(new King(board.PLAYER_1), 0, 0);
 		Square s2 = new Square(null, 1, 1);
+		
+		/* added in develop branch */
+		board.setSquare(s1); 
+		board.setSquare(s2);
+		
+		/* ---------------------- */
 		boolean result = board.movePiece(s1, s2);
+		
+	
+		System.out.println(result);
 		assertTrue(result);
 		
 		//Comprovar que la posici�n final contiene el rey

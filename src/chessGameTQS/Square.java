@@ -25,12 +25,15 @@ public class Square {
 
 		return "Pieza: " + piece + " Fila: " + row + " Columna: " + col;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		Square s = (Square) obj;
-		return (this.piece.equals(s.piece)) && this.row == s.row && this.col == s.col;
+		
+
+		return ((this.piece.equals(s.piece)) && this.row == s.row && this.col == s.col);
 	}
+	
 
 	public Piece getPiece() {
 		return piece;

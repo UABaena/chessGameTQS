@@ -86,6 +86,7 @@ public class Board {
 		
 		for (Square sAux : result) {
 			
+			
 			if (sAux.equals(sDestination)) {
 				
 				Square oldSquare = new Square(null,rowOrigin,colOrigin);

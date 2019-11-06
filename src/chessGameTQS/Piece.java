@@ -18,7 +18,7 @@ public abstract class Piece {
 	@Override
 	public boolean equals(Object obj) {
 		Piece p = (Piece) obj;
-		return (this.player == p.player) && this.name.equals(p.name);
+		return ((this.player == p.player) && (this.name == name));
 	}
 	
 	public int getPlayer() {

@@ -30,8 +30,20 @@ public class Square {
 	public boolean equals(Object obj) {
 		Square s = (Square) obj;
 		
+		if (s.getPiece() == null && this.getPiece() == null) {
+			
+			if (this.getRow() == s.getRow() && this.getCol() == s.getCol()) {
+				
+				return true;
+			}
+			else {
+				
+				return false;
+			}
+		}
 
-		return ((this.piece.equals(s.piece)) && this.row == s.row && this.col == s.col);
+		return ((this.piece.equals(s.piece)) && this.getRow() == s.getRow() && this.getCol() == s.getCol());
+	
 	}
 	
 

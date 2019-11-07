@@ -78,8 +78,32 @@ public class Board {
 
 	// Mover una pieza de un cuadrado a otro
 	public boolean movePiece(Square sOrigin, Square sDestination) {
+		
+		int rowOrigin = sOrigin.getRow();
+		int colOrigin = sOrigin.getCol();
+		
+		List<Square> result = this.board[rowOrigin][colOrigin].getPiece().getPossibleMoves(this, rowOrigin, rowOrigin);
+		
+		for (Square sAux : result) {
 			
-		return true;
+			
+			if (sAux.equals(sDestination)) {
+				
+				Square oldSquare = new Square(null,rowOrigin,colOrigin);
+				
+				Square newSquare = new Square(sOrigin.getPiece(),sDestination.getRow(),sDestination.getCol());
+				
+				this.setSquare(oldSquare);
+				this.setSquare(newSquare);
+				
+				return true;
+			}
+			
+			
+		}
+			
+			
+		return false;
 	}
 
 	public void setSquare(Square sq) {

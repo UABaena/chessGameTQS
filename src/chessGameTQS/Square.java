@@ -32,14 +32,8 @@ public class Square {
 		
 		if (s.getPiece() == null && this.getPiece() == null) {
 			
-			if (this.getRow() == s.getRow() && this.getCol() == s.getCol()) {
+			return (this.getRow() == s.getRow() && this.getCol() == s.getCol());
 				
-				return true;
-			}
-			else {
-				
-				return false;
-			}
 		}
 
 		return ((this.piece.equals(s.piece)) && this.getRow() == s.getRow() && this.getCol() == s.getCol());

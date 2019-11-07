@@ -90,8 +90,11 @@ public class Board {
 			if (sAux.equals(sDestination)) {
 				
 				Square oldSquare = new Square(null,rowOrigin,colOrigin);
+				
+				Square newSquare = new Square(sOrigin.getPiece(),sDestination.getRow(),sDestination.getCol());
+				
 				this.setSquare(oldSquare);
-				this.setSquare(sDestination);
+				this.setSquare(newSquare);
 				
 				return true;
 			}

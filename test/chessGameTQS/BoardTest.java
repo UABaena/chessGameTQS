@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,8 +48,7 @@ class BoardTest {
 		Square expected = new Square(new Rook(board.PLAYER_1), 0, 0);
 		Square result = board.getSquare(0, 0);
 		
-		System.out.println(expected);
-		System.out.println(result);
+
 
 		assertEquals(expected, result);
 
@@ -170,32 +168,54 @@ class BoardTest {
 		//Ejecutando con el rey un mivimiento posible
 		Square s1 = new Square(new King(board.PLAYER_1), 0, 0);
 		Square s2 = new Square(null, 1, 1);
-		boolean result = board.movePiece(s1, s2);
-		assertTrue(result);
 		
+		/* added in develop branch */
+		board.setSquare(s1); 
+		board.setSquare(s2);
+		
+		/* ---------------------- */
+		boolean result = board.movePiece(s1, s2);
+		
+
+
+		assertTrue(result);
+
+		System.out.println(board.getSquare(1, 1));
 		//Comprovar que la posici�n final contiene el rey
 		Square expected = new Square(new King(board.PLAYER_1), 1, 1);
-		assertEquals(expected, s2);
+		Square sResult = board.getSquare(1, 1);
+		assertEquals(expected, sResult);
 		
 		//Comprovar que la posici�n inicial de rey est� vac�a
 		Square expectedNull = new Square(null, 0, 0);
-		assertEquals(expectedNull, s1);
+		sResult = board.getSquare(0, 0);
+		assertEquals(expectedNull, sResult);
 		
-		
-		/* Caballo movimiento imposible */
+
+		//Caballo movimiento imposible
+	
 		
 		s1 = new Square(new Knight(board.PLAYER_2), 4, 4);
 		s2 = new Square(null, 5, 5);
+		
+		board.setSquare(s1);
+		board.setSquare(s2);
 		result = board.movePiece(s1, s2);
 		assertFalse(result);
 		
-		//Comprovar que la posici�n inicial contiene a�n la reina
-		expected = new Square(new Knight(board.PLAYER_2), 5, 5);
-		assertEquals(expected, s1);
+		//Comprovar que la posicion inicial contiene aun el caballo
+		sResult = board.getSquare(4, 4);
+		expected = new Square(new Knight(board.PLAYER_2), 4, 4);
+		assertEquals(expected, sResult);
+		
 		
 		//Comprovar que la posici�n final sigue vac�a
 		expectedNull = new Square(null, 5, 5);
-		assertEquals(expectedNull, s2);
+		sResult = board.getSquare(5, 5);
+		assertEquals(expectedNull, sResult);
+		
+		
+		
 		
 		
 		/*Reina movimiento fuera*/
@@ -203,19 +223,27 @@ class BoardTest {
 		s1 = new Square(new Queen(board.PLAYER_1), 4, 0);
 		s2 = new Square(null, 4,8);
 		
+		board.setSquare(s1); 
+		board.setSquare(s2);
+		
 		result = board.movePiece(s1, s2);
+		
 		assertFalse(result);
 		
 		//Comprovar que la posici�n inicial contiene a�n la reina
 		
-		expected = new Square(new Queen(board.PLAYER_2), 4, 0);
-		assertEquals(expected, s1);
+		expected = new Square(new Queen(board.PLAYER_1), 4, 0);
+		sResult = board.getSquare(4, 0);
+		assertEquals(expected, sResult);
 		
 		//Comprovar que la posici�n final sigue vac�a
 		
 		expectedNull = new Square(null, 4, 8);
-		assertEquals(expectedNull, s2);
+		sResult = board.getSquare(4, 8);
+
+		assertEquals(expectedNull, sResult);
 			
+		
 		
 	}
 	

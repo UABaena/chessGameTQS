@@ -10,7 +10,6 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
 
 
 public class KnightTest {
@@ -77,7 +76,7 @@ public class KnightTest {
 		
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 		
-		//Add piezas del mismo jugador e intenta ir a su posición.
+		//Add piezas del mismo jugador e intenta ir a su posiciï¿½n.
 		
 		
 		Square sq2 = new Square(new Pawn(board.PLAYER_2), 3, 7);

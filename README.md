@@ -58,6 +58,8 @@ escriure main i fer Ctrl + Espai.
 
 ## TODO
 - [ ] Transformar el peon al llegar a la ultima casilla. 
+- [ ] Mock object de game para probar sin la necesidad de introducir un input para el cursor. 
+
 
 ## Authors:
 

@@ -6,10 +6,10 @@ import java.util.List;
 public class Board {
 
 	// Variables para determinar quien esta jugando
-	public int PLAYER_1 = 0;// Blancas
-	public int PLAYER_2 = 1;// Negras
-	public int NUM_COLS = 8;
-	public int NUM_ROWS = 8;
+	public static int PLAYER_1 = 0;// Blancas
+	public static int PLAYER_2 = 1;// Negras
+	public static int NUM_COLS = 8;
+	public static int NUM_ROWS = 8;
 	// Variable que determina el turno de una persona
 	private int playerTurn = PLAYER_1;
 
@@ -17,7 +17,7 @@ public class Board {
 	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
 
 	public Board() {
-		// resetBoard();
+		resetBoard();
 		playerTurn = PLAYER_1;
 	}
 
@@ -78,31 +78,28 @@ public class Board {
 
 	// Mover una pieza de un cuadrado a otro
 	public boolean movePiece(Square sOrigin, Square sDestination) {
-		
+
 		int rowOrigin = sOrigin.getRow();
 		int colOrigin = sOrigin.getCol();
-		
+
 		List<Square> result = this.board[rowOrigin][colOrigin].getPiece().getPossibleMoves(this, rowOrigin, rowOrigin);
-		
+
 		for (Square sAux : result) {
-			
-			
+
 			if (sAux.equals(sDestination)) {
-				
-				Square oldSquare = new Square(null,rowOrigin,colOrigin);
-				
-				Square newSquare = new Square(sOrigin.getPiece(),sDestination.getRow(),sDestination.getCol());
-				
+
+				Square oldSquare = new Square(null, rowOrigin, colOrigin);
+
+				Square newSquare = new Square(sOrigin.getPiece(), sDestination.getRow(), sDestination.getCol());
+
 				this.setSquare(oldSquare);
 				this.setSquare(newSquare);
-				
+
 				return true;
 			}
-			
-			
+
 		}
-			
-			
+
 		return false;
 	}
 
@@ -110,6 +107,42 @@ public class Board {
 
 		this.board[sq.getRow()][sq.getCol()] = sq;
 
+	}
+
+	public void printBoard() {
+		System.out.println("Player: " + (this.playerTurn == Board.PLAYER_1 ? "Player 1":"Player 2"));
+		System.out.println("________________________________________");
+		
+		Square cursor = new Square(null,0,0);
+		
+		for (int i = 0; i < this.NUM_ROWS; i++) {
+			for (int j = 0; j < this.NUM_COLS; j++) {
+				Piece p = board[i][j].getPiece();
+
+				if (p != null)
+					System.out.print("| " + p + " |");
+				else
+					System.out.print("|   |");
+			}
+			System.out.print("\n");
+			// If cursor, pinta cursor, else, pinta vacio
+			for (int j = 0; j < this.NUM_COLS; j++) {
+				if(cursor.getRow()==i &&cursor.getCol()==j) {
+					System.out.print("| * |");
+				}
+				else
+				{
+					System.out.print("|   |");
+				}
+					
+			}
+			System.out.print("\n");
+			System.out.println("________________________________________");
+
+		}
+		System.out.println("________________________________________");
+		
+		
 	}
 
 }

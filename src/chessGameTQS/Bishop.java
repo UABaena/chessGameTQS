@@ -9,6 +9,13 @@ public class Bishop extends Piece {
 		this.name = "Alfil";
 		this.player = player;
 	}
+	
+	@Override
+	public String toString() {
+		
+		return (this.player == Board.PLAYER_1)?"B":"b";
+	
+	}
 
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
 

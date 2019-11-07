@@ -9,6 +9,14 @@ public class King extends Piece {
 		this.player = player;
 	}
 	
+	
+	@Override
+	public String toString() {
+		
+		return (this.player == Board.PLAYER_1)?"K":"k";
+	
+	}
+	
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
 
 		int row = r, col = c;

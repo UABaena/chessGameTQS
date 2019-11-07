@@ -9,16 +9,22 @@ public class Queen extends Piece {
 		this.player = player;
 	}
 
+	@Override
+	public String toString() {
+
+		return (this.player == Board.PLAYER_1) ? "Q" : "q";
+
+	}
+
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
 
 		int row = r, col = c;
 		List<Square> list = new ArrayList<Square>();
 
-
 		// Probar Arriba
 		row--;
 		boolean continueAdding = true;
-		
+
 		while (row >= 0 && continueAdding) {
 			Square s = b.getSquare(row, col);
 
@@ -38,11 +44,11 @@ public class Queen extends Piece {
 			row--;
 
 		}
-		
+
 		// Probar Abajo
 		row = r;
 		col = c;
-		
+
 		row++;
 		continueAdding = true;
 		while (row < b.NUM_ROWS && continueAdding) {
@@ -64,12 +70,11 @@ public class Queen extends Piece {
 			row++;
 
 		}
-		
-		
+
 		// Probar Izquierda
 		row = r;
 		col = c;
-		
+
 		col--;
 		continueAdding = true;
 		while (col >= 0 && continueAdding) {
@@ -91,11 +96,11 @@ public class Queen extends Piece {
 			col--;
 
 		}
-		
+
 		// Probar Derecha
 		row = r;
 		col = c;
-		
+
 		col++;
 		continueAdding = true;
 		while (row < b.NUM_COLS && continueAdding) {
@@ -117,15 +122,15 @@ public class Queen extends Piece {
 			col++;
 
 		}
-		
+
 		// Probar Arriba-Izquierda
 		row = r;
 		col = c;
-		
+
 		row--;
 		col--;
 		continueAdding = true;
-		
+
 		while (row >= 0 && col >= 0 && continueAdding) {
 			Square s = b.getSquare(row, col);
 
@@ -146,17 +151,15 @@ public class Queen extends Piece {
 			col--;
 
 		}
-		
-		
-		
+
 		// Probar Arriba-Derecha
 		row = r;
 		col = c;
-		
+
 		row--;
 		col++;
 		continueAdding = true;
-		
+
 		while (row >= 0 && col < b.NUM_COLS && continueAdding) {
 			Square s = b.getSquare(row, col);
 
@@ -177,16 +180,15 @@ public class Queen extends Piece {
 			col++;
 
 		}
-		
-		
+
 		// Probar Abajo-Izquierda
 		row = r;
 		col = c;
-		
+
 		row++;
 		col--;
 		continueAdding = true;
-		
+
 		while (row < b.NUM_ROWS && col >= 0 && continueAdding) {
 			Square s = b.getSquare(row, col);
 
@@ -207,15 +209,15 @@ public class Queen extends Piece {
 			col--;
 
 		}
-		
+
 		// Probar Abajo-Derecha
 		row = r;
 		col = c;
-		
+
 		row++;
 		col++;
 		continueAdding = true;
-		
+
 		while (row < b.NUM_ROWS && col < b.NUM_COLS && continueAdding) {
 			Square s = b.getSquare(row, col);
 
@@ -236,10 +238,7 @@ public class Queen extends Piece {
 			col++;
 
 		}
-		
-		
-		
-		
+
 		return list;
 	}
 

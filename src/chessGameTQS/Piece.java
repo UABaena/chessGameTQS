@@ -10,10 +10,7 @@ public abstract class Piece {
 	public abstract List<Square> getPossibleMoves(Board b, int row, int column);
 	
 	@Override
-	public String toString() {
-	
-		return name + " from " + player;
-	}
+	public abstract String toString() ;
 	
 	@Override
 	public boolean equals(Object obj) {

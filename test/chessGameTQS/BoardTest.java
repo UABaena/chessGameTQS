@@ -148,71 +148,116 @@ class BoardTest {
 
 	@Test
 	void testMovePiece() {
-		
-		//Inicializa el tablero vac�o para poder testear el movimiento de las piezas libremente
-		
+
+		// Inicializa el tablero vac�o para poder testear el movimiento de las piezas
+		// libremente
+
 		for (int i = 0; i < board.NUM_ROWS; i++) {
-			
-			for (int j = 0; j < board.NUM_COLS; j++){
-				
-				
-				board.setSquare(new Square(null,i,j));
-				
-				
-			}			
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
 		}
-		
-		//Ejecutando con el rey un mivimiento posible
+
+		// Ejecutando con el rey un mivimiento posible
 		Square s1 = new Square(new King(board.PLAYER_1), 0, 0);
 		Square s2 = new Square(null, 1, 1);
-		
+
 		/* added in develop branch */
-		board.setSquare(s1); 
+		board.setSquare(s1);
 		board.setSquare(s2);
-		
+
 		/* ---------------------- */
 		boolean result = board.movePiece(s1, s2);
 
 		assertTrue(result);
 
-		//Comprovar que la posici�n final contiene el rey
+		// Comprovar que la posici�n final contiene el rey
 		Square expected = new Square(new King(board.PLAYER_1), 1, 1);
 		Square sResult = board.getSquare(1, 1);
 		assertEquals(expected, sResult);
-		
-		//Comprovar que la posici�n inicial de rey est� vac�a
+
+		// Comprovar que la posici�n inicial de rey est� vac�a
 		Square expectedNull = new Square(null, 0, 0);
 		sResult = board.getSquare(0, 0);
 		assertEquals(expectedNull, sResult);
-		
 
-		//Caballo movimiento imposible
-	
-		
+		// Caballo movimiento imposible
+
 		s1 = new Square(new Knight(board.PLAYER_2), 4, 4);
 		s2 = new Square(null, 5, 5);
-		
+
 		board.setSquare(s1);
 		board.setSquare(s2);
 		result = board.movePiece(s1, s2);
-		//assertFalse(result);
-		
-		//Comprovar que la posicion inicial contiene aun el caballo
+		// assertFalse(result);
+
+		// Comprovar que la posicion inicial contiene aun el caballo
 		sResult = board.getSquare(4, 4);
 		expected = new Square(new Knight(board.PLAYER_2), 4, 4);
 		assertEquals(expected, sResult);
-		
-		
-		//Comprovar que la posici�n final sigue vac�a
+
+		// Comprovar que la posici�n final sigue vac�a
 		expectedNull = new Square(null, 5, 5);
 		sResult = board.getSquare(5, 5);
 		assertEquals(expectedNull, sResult);
-		
-		
+
+	}
+
+	@Test
+	void testCursor() {
+
+		Square s = board.getCursor();
+
+		//Posicion inicial del cursor
+		int expected = 0;
+		int result = s.getRow();
+		assertTrue(expected == result);
+		result = s.getCol();
+		assertTrue(expected == result);
 
 		
+		//No se deberia poder mover arriba
+		board.cursorUp();
+
+		s = board.getCursor();
+
+		expected = -1;
+		result = s.getRow();
+		assertFalse(expected == result);
+		
+		//Movimiento a la derecha
+		board.cursorRight();
+		
+		expected = 1;
+		result = board.getCursor().getCol();
+		assertTrue(expected == result);
+
+		//Movimiento abajo
+		board.cursorDown();
+
+		expected = 1;
+		result = board.getCursor().getRow();
+		assertTrue(expected == result);
+		
+
+		//Movimiento a la izquierda		
+		board.cursorLeft();
+		
+		expected = 0;
+		result = board.getCursor().getCol();
+		assertTrue(expected == result);
+		
+		//Moviminto arriba
+		board.cursorUp();
+		
+		expected = 0;
+		result = board.getCursor().getRow();
+		assertTrue(expected == result);
+		
+		
 	}
-	
-	
 
 }

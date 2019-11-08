@@ -15,10 +15,12 @@ public class Board {
 
 	// Tablero de juego
 	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
+	private Square cursor;
 
 	public Board() {
 		resetBoard();
 		playerTurn = PLAYER_1;
+		cursor = board[0][0];
 	}
 
 	// El tablero se reestablece a la posición original
@@ -62,6 +64,7 @@ public class Board {
 			for (int col = 0; col < this.NUM_COLS; col++)
 				board[row][col] = new Square(null, row, col);
 
+		cursor = board[0][0];
 	}
 
 	public void swapTurn() {
@@ -110,11 +113,10 @@ public class Board {
 	}
 
 	public void printBoard() {
-		System.out.println("Player: " + (this.playerTurn == Board.PLAYER_1 ? "Player 1":"Player 2"));
+		System.out.print("\n\n\n\n\n\n\n");
+		System.out.println("Player: " + (this.playerTurn == Board.PLAYER_1 ? "Player 1" : "Player 2"));
 		System.out.println("________________________________________");
-		
-		Square cursor = new Square(null,0,0);
-		
+
 		for (int i = 0; i < this.NUM_ROWS; i++) {
 			for (int j = 0; j < this.NUM_COLS; j++) {
 				Piece p = board[i][j].getPiece();
@@ -127,22 +129,43 @@ public class Board {
 			System.out.print("\n");
 			// If cursor, pinta cursor, else, pinta vacio
 			for (int j = 0; j < this.NUM_COLS; j++) {
-				if(cursor.getRow()==i &&cursor.getCol()==j) {
+				if (cursor.getRow() == i && cursor.getCol() == j) {
 					System.out.print("| * |");
-				}
-				else
-				{
+				} else {
 					System.out.print("|   |");
 				}
-					
+
 			}
 			System.out.print("\n");
 			System.out.println("________________________________________");
 
 		}
 		System.out.println("________________________________________");
-		
-		
+
 	}
 
+	// Cursor Functions
+	public Square getCursor() {
+		return cursor;
+	}
+
+	public void cursorDown() {
+		if (cursor.getRow() < NUM_ROWS -1)
+			cursor = board[cursor.getRow() + 1][cursor.getCol()];
+	}
+
+	public void cursorRight() {
+		if (cursor.getCol() < NUM_COLS - 1)
+			cursor = board[cursor.getRow()][cursor.getCol() + 1];
+	}
+
+	public void cursorLeft() {
+		if (cursor.getCol() > 0)
+			cursor = board[cursor.getRow()][cursor.getCol() - 1];
+	}
+
+	public void cursorUp() {
+		if (cursor.getRow() > 0)
+			cursor = board[cursor.getRow() - 1][cursor.getCol()];
+	}
 }

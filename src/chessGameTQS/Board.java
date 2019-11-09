@@ -85,10 +85,13 @@ public class Board {
 		int rowOrigin = sOrigin.getRow();
 		int colOrigin = sOrigin.getCol();
 
-		List<Square> result = this.board[rowOrigin][colOrigin].getPiece().getPossibleMoves(this, rowOrigin, rowOrigin);
+		List<Square> result = this.board[rowOrigin][colOrigin].getPiece().getPossibleMoves(this, rowOrigin, colOrigin);
 
 		for (Square sAux : result) {
-
+			
+			System.out.println(sAux+" "+sDestination+" ");
+			System.out.println(sAux.equals(sDestination));
+			
 			if (sAux.equals(sDestination)) {
 
 				Square oldSquare = new Square(null, rowOrigin, colOrigin);

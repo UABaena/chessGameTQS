@@ -102,22 +102,43 @@ public class GameTest {
 	public void testgetWinner() {
 
 		// Esta funcion se ejecuta siempre cuando el juegue este acabado.
-		
-		this.testisFinished();
+			
+		Board b = game.getBoard();
 
+		// Tablero iniciado - Los dos reyes están vivos
+		b.resetBoard();
+
+		boolean result = game.isFinished();
+		assertFalse(result);
+
+		// Matamos a un rey (Hardcoded) lo eliminamos del tablero
+		
+		Square sq1 = new Square (null,0,3); //Posicion del rey
+		b.setSquare(sq1); //Matamos rey jugador 1
+		
+		
+		result = game.isFinished();
+		assertTrue(result);
+
+		
 		// Gana el jugador 1
-		
-		
 
-		int winnerExpected = Board.PLAYER_1;
+
+		int winnerExpected = Board.PLAYER_2;
 		int winner = game.getWinner();
 
 		assertEquals(winner, winnerExpected);
 
 		// Gana el jugador 2
+		
+		b.resetBoard();
+		sq1 = new Square (null,7,3); //Posicion del rey
+		b.setSquare(sq1); //Matamos rey jugador 2
+		
 
-		winnerExpected = Board.PLAYER_2;
+		winnerExpected = Board.PLAYER_1;
 		winner = game.getWinner();
+		
 
 		assertEquals(winner, winnerExpected);
 

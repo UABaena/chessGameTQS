@@ -85,8 +85,13 @@ public class Game {
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
 				
-				if (board.getSquare(i, j).getPiece().getName() == "Rey") 
-					numKings++;
+				if (board.getSquare(i, j).getPiece() != null) {
+					
+					if (board.getSquare(i, j).getPiece().getName() == "Rey") 
+						numKings++;
+					    
+				}
+				
 	
 			}	
 		}
@@ -105,10 +110,13 @@ public class Game {
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
 				
+				if (board.getSquare(i, j).getPiece() != null) {
+				
 				if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() == board.PLAYER_1) 
 					return 0;
 	
-			}	
+			}	}
+			
 		}
 		
 		return 1;

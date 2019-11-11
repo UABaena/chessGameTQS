@@ -1,5 +1,6 @@
 package chessGameTQS;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -36,7 +37,37 @@ public class Game {
 	}
 
 	public boolean isJaque() {
-		return true;
+		
+		int turnPlayer = board.getPlayerTurn();
+		
+		//Posibles movimientos de la pieza destino
+		
+		List<Square> result = board.getSquare(this.destination.getRow(), this.destination.getCol()).getPiece().getPossibleMoves(board, 2, 5);
+		
+		//Busca el rey del jugador contrario
+		
+		Square sKing = null;
+		
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+			for (int j = 0; j < board.NUM_COLS; j++) {
+				
+				if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() != turnPlayer){
+					
+					sKing = board.getSquare(i, j);
+					
+					
+				}
+
+			}
+			
+		}
+		
+		if (result.contains(sKing)) {
+			return true;
+		}
+			
+	
+		return false;
 	}
 
 	public boolean isFinished() {

@@ -22,4 +22,8 @@ public abstract class Piece {
 		return player;
 	}
 	
+	public String getName() {
+		return name;
+	}
+	
 }

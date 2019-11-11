@@ -21,11 +21,15 @@ public class GameTest {
 		Board b = game.getBoard();
 
 		// Tablero iniciado - No hay jaque
+		b.resetBoard();
 		boolean result = game.isJaque();
 		assertFalse(result);
 
 		// Preparamos tablero para crear jaque
 
+		
+		//
+		Square s1 = b.getSquare(0, 4);
 		result = game.isJaque();
 		assertTrue(result);
 
@@ -68,7 +72,7 @@ public class GameTest {
 	}
 
 	@Test
-	public void testselectSquareToMove() {
+	public void testPlayerTurn() {
 		
 		//Movimiento de caballo
 		
@@ -93,12 +97,18 @@ public class GameTest {
 		
 
 	}
+	@Test
+	public void testGame() {
+		
+		//En este metodo se comprueva que el bucle del juego funciona correctamente
+		
+		
+		
+		
+		
+	}
 
 	
 
-	@Test
-	public void testplayerTurn() {
-
-	}
 
 }

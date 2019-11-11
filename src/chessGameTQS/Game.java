@@ -78,12 +78,41 @@ public class Game {
 
 	public boolean isFinished() {
 
+		//Metodo que recorre el tablero y busca los dos reyes, en el momento en el que no estes los dos devuelve true
+		
+		int numKings = 0;
+		
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+			for (int j = 0; j < board.NUM_COLS; j++) {
+				
+				if (board.getSquare(i, j).getPiece().getName() == "Rey") 
+					numKings++;
+	
+			}	
+		}
+		
+		if (numKings == 2)
+			return false;
+		
 		return true;
 
 	}
 
 	public int getWinner() {
-		return board.PLAYER_2;
+		
+		int winner = 0;
+		
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+			for (int j = 0; j < board.NUM_COLS; j++) {
+				
+				if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() == board.PLAYER_1) 
+					return 0;
+	
+			}	
+		}
+		
+		return 1;
+	
 	}
 
 	public void playTurn() {
@@ -133,7 +162,10 @@ public class Game {
 			board.printBoard();
 		}
 
+		
 		// Get segunda casilla
+		
+		
 		valid = false;
 		while (!valid) {
 			System.out.println("Introduce la casilla de Destino ...");
@@ -169,8 +201,10 @@ public class Game {
 		}
 		System.out.println(origin+" "+destination);
 		// Realizar Movimiento y cambiar turno
+		
 		boolean result = board.movePiece(origin, destination);
 		System.out.println("True?: "+ result);
+		
 		if (result)
 			board.swapTurn();
 		

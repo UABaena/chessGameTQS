@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Game {
 
-	private Board board;
+	protected Board board;
 
 	private Square origin;
 	private Square destination;
@@ -42,11 +42,12 @@ public class Game {
 		
 		//Posibles movimientos de la pieza destino
 		
-		List<Square> result = board.getSquare(this.destination.getRow(), this.destination.getCol()).getPiece().getPossibleMoves(board, 2, 5);
+		//hay que pasarle el square sDestination
+		List<Square> result = board.getSquare(this.destination.getRow(), this.destination.getCol()).getPiece().getPossibleMoves(board, this.destination.getRow(), this.destination.getCol());
 		
 		//Busca el rey del jugador contrario
 		
-		Square sKing = null;
+		Square sKing = new Square();
 		
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
@@ -57,13 +58,18 @@ public class Game {
 					
 					
 				}
-
 			}
-			
+
 		}
 		
-		if (result.contains(sKing)) {
-			return true;
+		for (Square sAux : result) {
+			
+			
+			if (sAux.equals(sKing)) {
+
+
+				return true;
+			}
 		}
 			
 	
@@ -180,5 +186,6 @@ public class Game {
 		return key;
 
 	}
+
 
 }

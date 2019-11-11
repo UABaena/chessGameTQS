@@ -82,7 +82,7 @@ public class Pawn extends Piece {
 				if (s.getPiece() == null) {// Miramos si puede saltar a la primera casilla
 					list.add(s);
 
-					s = b.getSquare(row - 1, col);// Miramos si puede saltar a la segunda casilla
+					s = b.getSquare(row - 2, col);// Miramos si puede saltar a la segunda casilla
 					if (s.getPiece() == null) {
 						list.add(s);
 					}

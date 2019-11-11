@@ -35,6 +35,9 @@ public class Square {
 			return (this.getRow() == s.getRow() && this.getCol() == s.getCol());
 				
 		}
+		
+		if (s.getPiece() == null && this.getPiece() != null) return false;
+		if (s.getPiece() != null && this.getPiece() == null) return false;
 
 		return ((this.piece.equals(s.piece)) && this.getRow() == s.getRow() && this.getCol() == s.getCol());
 	

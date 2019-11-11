@@ -1,8 +1,153 @@
 package chessGameTQS;
 
+import java.util.Scanner;
+
 public class Game {
-	
-	
-	
-	
+
+	private Board board;
+
+	private Square origin;
+	private Square destination;
+
+	public Game() {
+		board = new Board();
+	}
+
+	public void printInstrucciones() {
+
+		System.out.println("--------------------------------------------------");
+		System.out.println("                    Instrucciones                 ");
+		System.out.println("--------------------------------------------------");
+		System.out.println("Movimiento:");
+		System.out.println("w: Arriba");
+		System.out.println("a: Izquierda");
+		System.out.println("s: Abajo");
+		System.out.println("d: Derecha");
+		System.out.println("p: Jugar Casilla");
+		System.out.println("--------------------------------------------------");
+		System.out.println("Cada turno consiste en jugar 2 casillas,");
+		System.out.println("una con la casilla origen y otra de destino.");
+		System.out.println("--------------------------------------------------");
+
+	}
+
+	public Board getBoard() {
+		return board;
+	}
+
+	public boolean isJaque() {
+		return true;
+	}
+
+	public boolean isFinished() {
+
+		return true;
+
+	}
+
+	public int getWinner() {
+		return board.PLAYER_2;
+	}
+
+	public void playTurn() {
+		origin = null;
+		destination = null;
+
+		board.printBoard();
+
+		// Get primera casilla
+		boolean valid = false;
+
+		while (!valid) {
+			// Coger el caracter
+			System.out.println("Introduce la casilla de origen...");
+
+			char c = this.getInput();
+			switch (c) {
+			case 'w':
+				board.cursorUp();
+				break;
+			case 'a':
+				board.cursorLeft();
+				break;
+			case 's':
+				board.cursorDown();
+				break;
+			case 'd':
+				board.cursorRight();
+				break;
+
+			case 'p':
+
+				if (board.getCursor().getPiece() != null
+						&& board.getCursor().getPiece().getPlayer() == board.getPlayerTurn()) {
+
+					origin = board.getCursor();
+					valid = true;
+
+				}
+
+				break;
+
+			default:
+
+				return;
+			}
+			board.printBoard();
+		}
+
+		// Get segunda casilla
+		valid = false;
+		while (!valid) {
+			System.out.println("Introduce la casilla de Destino ...");
+
+			// Coger el caracter
+			char c = this.getInput();
+			switch (c) {
+			case 'w':
+				board.cursorUp();
+				break;
+			case 'a':
+				board.cursorLeft();
+				break;
+			case 's':
+				board.cursorDown();
+				break;
+			case 'd':
+				board.cursorRight();
+				break;
+
+			case 'p':
+
+				destination = board.getCursor();
+				valid = true;
+
+				break;
+
+			default:
+
+				return;
+			}
+			board.printBoard();
+		}
+		System.out.println(origin+" "+destination);
+		// Realizar Movimiento y cambiar turno
+		boolean result = board.movePiece(origin, destination);
+		System.out.println("True?: "+ result);
+		if (result)
+			board.swapTurn();
+		
+		
+		board.printBoard();
+	}
+
+	public char getInput() {
+
+		Scanner scan = new Scanner(System.in);
+		char key;
+		key = scan.next().charAt(0);
+		return key;
+
+	}
+
 }

@@ -1,14 +1,13 @@
 package chessGameTQS;
 
+import java.util.Scanner;
+
 public class Main {
-	
+
 	int a;
-	
+
 	public static void main(String[] args) {
-		Board b = new Board();
-		
-		b.printBoard();
-
+		Game g = new Game();
+		g.playTurn();
 	}
-
 }

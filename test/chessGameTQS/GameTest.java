@@ -102,8 +102,12 @@ public class GameTest {
 	public void testgetWinner() {
 
 		// Esta funcion se ejecuta siempre cuando el juegue este acabado.
+		
+		this.testisFinished();
 
 		// Gana el jugador 1
+		
+		
 
 		int winnerExpected = Board.PLAYER_1;
 		int winner = game.getWinner();

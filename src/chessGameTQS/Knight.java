@@ -139,7 +139,7 @@ public class Knight extends Piece {
 
 		/* Logica movimiento */
 
-		if (row < b.NUM_ROWS && col >= 0) {
+		if (row >= 0 && col >= 0) {
 
 			Square s = b.getSquare(row, col);
 			Piece p = s.getPiece();

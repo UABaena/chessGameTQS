@@ -22,7 +22,8 @@ public class GameTest {
 
 	@Test
 	public void testisJaque() {
-
+		
+		game =  new Game();
 		Board b = game.getBoard();
 
 		// Tablero iniciado - No hay jaque
@@ -80,6 +81,7 @@ public class GameTest {
 
 		// Preparamos tablero con los dos reyes vivos
 		
+		game =  new Game();
 		Board b = game.getBoard();
 
 		// Tablero iniciado - Los dos reyes están vivos
@@ -105,7 +107,8 @@ public class GameTest {
 	public void testgetWinner() {
 
 		// Esta funcion se ejecuta siempre cuando el juegue este acabado.
-			
+		
+		game =  new Game();
 		Board b = game.getBoard();
 
 		// Tablero iniciado - Los dos reyes están vivos

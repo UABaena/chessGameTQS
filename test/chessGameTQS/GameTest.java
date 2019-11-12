@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,7 +17,7 @@ public class GameTest {
 
 	@BeforeEach
 	public void setUp() {
-		game = new MockGame();
+		
 	}
 
 	@Test
@@ -148,6 +151,8 @@ public class GameTest {
 	public void testPlayerTurn() {
 		
 		//Movimiento de caballo
+		String[] chars = { "d", "p", "s", "s", "a", "p" };
+		game = new MockGame(chars);
 		
 		//Se juega el turno con los atributos definidos en el MockObject de Game
 		game.playTurn();
@@ -171,6 +176,22 @@ public class GameTest {
 		
 
 	}
+	
+	@Test
+	public void testCheckInput() {
+		
+		String[] list = {"pe"};
+		
+		game = new MockGame(list);
+		
+		char expectedResult = 'e';
+		char result = game.getInput();
+		assertEquals(expectedResult,result);
+		
+		
+		
+		
+	}
 	@Test
 	public void testPlay() {
 		
@@ -185,6 +206,8 @@ public class GameTest {
 		//Debemos implementarlo en el metodo playTurn
 		
 	}
+	
+	
 
 	
 

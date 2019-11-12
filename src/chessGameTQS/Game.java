@@ -43,36 +43,36 @@ public class Game {
 		//Posibles movimientos de la pieza destino
 		
 		//hay que pasarle el square sDestination
-		List<Square> result = board.getSquare(this.destination.getRow(), this.destination.getCol()).getPiece().getPossibleMoves(board, this.destination.getRow(), this.destination.getCol());
 		
-		//Busca el rey del jugador contrario
-		
-		Square sKing = new Square();
+		Square sKing;
 		
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
 				
-				if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() != turnPlayer){
+				if(board.getSquare(i, j).getPiece() != null && board.getSquare(i, j).getPiece().getPlayer() == board.getPlayerTurn()) {
 					
-					sKing = board.getSquare(i, j);
-					
-					
+					List<Square> result = board.getSquare(i, j).getPiece().getPossibleMoves(board, i, j);
+
+					for (Square sAux : result) {
+						
+						
+						if (sAux.getPiece()!= null && sAux.getPiece().getName() == "Rey") {
+
+							return true;
+						}
+					}
+
 				}
+				
+				
+				
+				
+				
 			}
-
 		}
+			
 		
-		for (Square sAux : result) {
-			
-			
-			if (sAux.equals(sKing)) {
-
-
-				return true;
-			}
-		}
-			
-	
+		
 		return false;
 	}
 
@@ -92,7 +92,6 @@ public class Game {
 					    
 				}
 				
-	
 			}	
 		}
 		
@@ -105,7 +104,7 @@ public class Game {
 
 	public int getWinner() {
 		
-		int winner = 0;
+	
 		
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
@@ -113,14 +112,13 @@ public class Game {
 				if (board.getSquare(i, j).getPiece() != null) {
 				
 				if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() == board.PLAYER_1) 
-					return 0;
+					return board.PLAYER_1;
 	
 			}	}
 			
 		}
 		
-		return 1;
-	
+		return board.PLAYER_2;
 	}
 
 	public void playTurn() {
@@ -137,6 +135,7 @@ public class Game {
 			System.out.println("Introduce la casilla de origen...");
 
 			char c = this.getInput();
+			
 			switch (c) {
 			case 'w':
 				board.cursorUp();
@@ -207,13 +206,14 @@ public class Game {
 			}
 			board.printBoard();
 		}
-		System.out.println(origin+" "+destination);
+
 		// Realizar Movimiento y cambiar turno
 		
 		boolean result = board.movePiece(origin, destination);
-		System.out.println("True?: "+ result);
 		
+	
 		if (result)
+			//llamar jaque
 			board.swapTurn();
 		
 		
@@ -223,9 +223,11 @@ public class Game {
 	public char getInput() {
 
 		Scanner scan = new Scanner(System.in);
-		char key;
-		key = scan.next().charAt(0);
-		return key;
+	
+		String key = scan.next();
+
+		if (key.length() > 1) return 'e';
+		return key.charAt(0);
 
 	}
 

@@ -103,7 +103,7 @@ public class Rook extends Piece {
 
 		col++;
 		continueAdding = true;
-		while (row < b.NUM_COLS && continueAdding) {
+		while (col < b.NUM_COLS && continueAdding) {
 			Square s = b.getSquare(row, col);
 
 			Piece p = s.getPiece();

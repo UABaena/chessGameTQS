@@ -165,7 +165,7 @@ class BoardTest {
 		Square s1 = new Square(new King(board.PLAYER_1), 0, 0);
 		Square s2 = new Square(null, 1, 1);
 
-		/* added in develop branch */
+		
 		board.setSquare(s1);
 		board.setSquare(s2);
 
@@ -174,12 +174,12 @@ class BoardTest {
 
 		assertTrue(result);
 
-		// Comprovar que la posici�n final contiene el rey
+		// Comprovar que la posicion final contiene el rey
 		Square expected = new Square(new King(board.PLAYER_1), 1, 1);
 		Square sResult = board.getSquare(1, 1);
 		assertEquals(expected, sResult);
 
-		// Comprovar que la posici�n inicial de rey est� vac�a
+		// Comprovar que la posicion inicial de rey esta vacia
 		Square expectedNull = new Square(null, 0, 0);
 		sResult = board.getSquare(0, 0);
 		assertEquals(expectedNull, sResult);

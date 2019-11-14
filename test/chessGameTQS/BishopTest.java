@@ -20,7 +20,7 @@ class BishopTest {
 
 	/*
 	 * EL OBJETIVO DE ESTE METODO ES COMPROVAR QUE LA FICHA SELECCIONADA SOLO PUEDA
-	 * REALIZAR LOS MOVIMIENTOS POSIBLES SEG�N COMO EST� EL TABLERO
+	 * REALIZAR LOS MOVIMIENTOS POSIBLES SEGUN COMO ESTE EL TABLERO
 	 */
 	@Test
 	void testPossiblesMovements() {
@@ -34,8 +34,8 @@ class BishopTest {
 			}
 		}
 
-		// Se van a inicializar una serie de piezas y se realizar�n los posibles
-		// movimientos en funci�n de las fichas
+		// Se van a inicializar una serie de piezas y se realizaron los posibles
+		// movimientos en funcion de las fichas
 
 		/* El objeto SQ1 siempre va a ser el que vamos a intentar mover */
 		Square sq1 = new Square(new Bishop(board.PLAYER_2), 6, 3);
@@ -77,8 +77,8 @@ class BishopTest {
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 
-		// A�ade dos casillas donde NO puede ir la pieza a la lista de movimientos
-		// Esperados y se realiza la comprobaci�n
+		// Anade dos casillas donde NO puede ir la pieza a la lista de movimientos
+		// Esperados y se realiza la comprobacion
 
 		Square expectedSq7 = board.getSquare(7, 4);
 		Square expectedSq8 = board.getSquare(4, 1);

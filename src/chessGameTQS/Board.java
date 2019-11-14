@@ -16,6 +16,16 @@ public class Board {
 	// Tablero de juego
 	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
 	private Square cursor;
+	//
+	String extraText = "";
+
+	public String getExtraText() {
+		return extraText;
+	}
+
+	public void setExtraText(String extraText) {
+		this.extraText = extraText;
+	}
 
 	public Board() {
 		resetBoard();
@@ -88,10 +98,9 @@ public class Board {
 		List<Square> result = this.board[rowOrigin][colOrigin].getPiece().getPossibleMoves(this, rowOrigin, colOrigin);
 
 		for (Square sAux : result) {
-			
-			System.out.println(sAux+" "+sDestination+" ");
-			System.out.println(sAux.equals(sDestination));
-			
+
+
+
 			if (sAux.equals(sDestination)) {
 
 				Square oldSquare = new Square(null, rowOrigin, colOrigin);
@@ -117,7 +126,8 @@ public class Board {
 
 	public void printBoard() {
 		System.out.print("\n\n\n\n\n\n\n");
-		System.out.println("Player: " + (this.playerTurn == Board.PLAYER_1 ? "Player 1" : "Player 2"));
+		System.out
+				.println("Player: " + (this.playerTurn == Board.PLAYER_1 ? "Player 1" : "Player 2") + " " + extraText);
 		System.out.println("________________________________________");
 
 		for (int i = 0; i < this.NUM_ROWS; i++) {
@@ -153,7 +163,7 @@ public class Board {
 	}
 
 	public void cursorDown() {
-		if (cursor.getRow() < NUM_ROWS -1)
+		if (cursor.getRow() < NUM_ROWS - 1)
 			cursor = board[cursor.getRow() + 1][cursor.getCol()];
 	}
 

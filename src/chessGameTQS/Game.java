@@ -37,87 +37,82 @@ public class Game {
 	}
 
 	public boolean isJaque() {
-		
+
 		int turnPlayer = board.getPlayerTurn();
-		
-		//Posibles movimientos de la pieza destino
-		
-		//hay que pasarle el square sDestination
-		
+
+		// Posibles movimientos de la pieza destino
+
+		// hay que pasarle el square sDestination
+
 		Square sKing;
-		
+
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
-				
-				if(board.getSquare(i, j).getPiece() != null && board.getSquare(i, j).getPiece().getPlayer() == board.getPlayerTurn()) {
-					
+
+				if (board.getSquare(i, j).getPiece() != null
+						&& board.getSquare(i, j).getPiece().getPlayer() == board.getPlayerTurn()) {
+
 					List<Square> result = board.getSquare(i, j).getPiece().getPossibleMoves(board, i, j);
 
 					for (Square sAux : result) {
-						
-						
-						if (sAux.getPiece()!= null && sAux.getPiece().getName() == "Rey") {
+
+						if (sAux.getPiece() != null && sAux.getPiece().getName() == "Rey") {
 
 							return true;
 						}
 					}
 
 				}
-				
-				
-				
-				
-				
+
 			}
 		}
-			
-		
-		
+
 		return false;
 	}
 
 	public boolean isFinished() {
 
-		//Metodo que recorre el tablero y busca los dos reyes, en el momento en el que no estes los dos devuelve true
-		
+		// Metodo que recorre el tablero y busca los dos reyes, en el momento en el que
+		// no estes los dos devuelve true
+
 		int numKings = 0;
-		
+
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
-				
+
 				if (board.getSquare(i, j).getPiece() != null) {
-					
-					if (board.getSquare(i, j).getPiece().getName() == "Rey") 
+
+					if (board.getSquare(i, j).getPiece().getName() == "Rey")
 						numKings++;
-					    
+
 				}
-				
-			}	
+
+			}
 		}
-		
+
 		if (numKings == 2)
 			return false;
-		
+
 		return true;
 
 	}
 
 	public int getWinner() {
-		
-	
-		
+
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 			for (int j = 0; j < board.NUM_COLS; j++) {
-				
+
 				if (board.getSquare(i, j).getPiece() != null) {
-				
-				if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() == board.PLAYER_1) 
-					return board.PLAYER_1;
-	
-			}	}
-			
+
+					if (board.getSquare(i, j).getPiece().getName() == "Rey"
+							&& board.getSquare(i, j).getPiece().getPlayer() == board.PLAYER_1)
+						return board.PLAYER_1;
+
+				}
+			}
+
 		}
-		
+
 		return board.PLAYER_2;
 	}
 
@@ -126,7 +121,7 @@ public class Game {
 		destination = null;
 
 		board.printBoard();
-
+		board.setExtraText("");
 		// Get primera casilla
 		boolean valid = false;
 
@@ -135,7 +130,7 @@ public class Game {
 			System.out.println("Introduce la casilla de origen...");
 
 			char c = this.getInput();
-			
+
 			switch (c) {
 			case 'w':
 				board.cursorUp();
@@ -158,21 +153,22 @@ public class Game {
 					origin = board.getCursor();
 					valid = true;
 
-				}
+				} else
+					board.setExtraText("Infor: No puedes mover esa casilla");
 
 				break;
 
 			default:
-
+				board.setExtraText("Info: Entrada no valida");
+				this.printInstrucciones();
 				return;
 			}
 			board.printBoard();
+			board.setExtraText("");
 		}
 
-		
 		// Get segunda casilla
-		
-		
+
 		valid = false;
 		while (!valid) {
 			System.out.println("Introduce la casilla de Destino ...");
@@ -201,35 +197,41 @@ public class Game {
 				break;
 
 			default:
-
+				board.setExtraText("Info: Entrada no valida");
+				this.printInstrucciones();
 				return;
 			}
 			board.printBoard();
 		}
 
 		// Realizar Movimiento y cambiar turno
-		
+
 		boolean result = board.movePiece(origin, destination);
-		
-	
-		if (result)
-			//llamar jaque
+
+		if (result) {
+
+			// llamar jaque
 			board.swapTurn();
-		
-		
-		board.printBoard();
+			if (this.isJaque())
+				board.setExtraText("Info: Jaque en el tablero!");
+			
+
+		}
+		else
+			board.setExtraText("Info: No puedes mover a esa posicion");
+
 	}
 
 	public char getInput() {
 
 		Scanner scan = new Scanner(System.in);
-	
+
 		String key = scan.next();
 
-		if (key.length() > 1) return 'e';
+		if (key.length() > 1)
+			return 'e';
 		return key.charAt(0);
 
 	}
-
 
 }

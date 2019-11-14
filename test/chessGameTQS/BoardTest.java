@@ -211,15 +211,14 @@ class BoardTest {
 
 		Square s = board.getCursor();
 
-		//Posicion inicial del cursor
+		// Posicion inicial del cursor
 		int expected = 0;
 		int result = s.getRow();
 		assertTrue(expected == result);
 		result = s.getCol();
 		assertTrue(expected == result);
 
-		
-		//No se deberia poder mover arriba
+		// No se deberia poder mover arriba
 		board.cursorUp();
 
 		s = board.getCursor();
@@ -227,37 +226,138 @@ class BoardTest {
 		expected = -1;
 		result = s.getRow();
 		assertFalse(expected == result);
-		
-		//Movimiento a la derecha
+
+		// Movimiento a la derecha
 		board.cursorRight();
-		
+
 		expected = 1;
 		result = board.getCursor().getCol();
 		assertTrue(expected == result);
 
-		//Movimiento abajo
+		// Movimiento abajo
 		board.cursorDown();
 
 		expected = 1;
 		result = board.getCursor().getRow();
 		assertTrue(expected == result);
-		
 
-		//Movimiento a la izquierda		
+		// Movimiento a la izquierda
 		board.cursorLeft();
-		
+
 		expected = 0;
 		result = board.getCursor().getCol();
 		assertTrue(expected == result);
-		
-		//Moviminto arriba
+
+		// Moviminto arriba
 		board.cursorUp();
-		
+
 		expected = 0;
 		result = board.getCursor().getRow();
 		assertTrue(expected == result);
-		
-		
+
+		// No poder moverse a la Izquierda
+		board.cursorLeft();
+		expected = 0;
+		int resultRow = board.getCursor().getRow();
+		int resultCol = board.getCursor().getCol();
+
+		assertTrue(expected == resultRow);
+		assertTrue(expected == resultCol);
+
+		// Esquina abajo a la Izquierda
+
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+
+		int expectedRow = 7, expectedCol = 0;
+
+		Square sResult = board.getCursor();
+		Square sExpected = board.getSquare(7, 0);
+
+		assertEquals(sResult, sExpected);
+
+		// No poder moverse abajo e izquierda en la esquina.
+		board.cursorLeft();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(7, 0);
+		assertEquals(sResult, sExpected);
+
+		board.cursorDown();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(7, 0);
+		assertEquals(sResult, sExpected);
+
+		// En el medio del tablero
+		board.cursorRight();
+		board.cursorUp();
+		board.cursorRight();
+		board.cursorUp();
+		board.cursorRight();
+		board.cursorUp();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(4, 3);
+		assertEquals(sResult, sExpected);
+
+		// Esquina arriba a la derecha
+		board.cursorRight();
+		board.cursorUp();
+		board.cursorRight();
+		board.cursorUp();
+		board.cursorRight();
+		board.cursorUp();
+		board.cursorRight();
+		board.cursorUp();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(0, 7);
+		assertEquals(sResult, sExpected);
+
+		// No se puede mover derecha ni arriba
+		board.cursorRight();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(0, 7);
+		assertEquals(sResult, sExpected);
+
+		board.cursorUp();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(0, 7);
+		assertEquals(sResult, sExpected);
+
+		// Esquina abajo a la derecha
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+		board.cursorDown();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(7, 7);
+		assertEquals(sResult, sExpected);
+
+		board.cursorDown();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(7, 7);
+		assertEquals(sResult, sExpected);
+
+		board.cursorRight();
+
+		sResult = board.getCursor();
+		sExpected = board.getSquare(7, 7);
+		assertEquals(sResult, sExpected);
+
 	}
 
 }

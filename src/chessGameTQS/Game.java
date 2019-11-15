@@ -90,11 +90,7 @@ public class Game {
 			}
 		}
 
-		if (numKings == 2)
-			return false;
-
-		return true;
-
+		return !(numKings == 2);
 	}
 
 	public int getWinner() {
@@ -214,10 +210,8 @@ public class Game {
 			board.swapTurn();
 			if (this.isJaque())
 				board.setExtraText("Info: Jaque en el tablero!");
-			
 
-		}
-		else
+		} else
 			board.setExtraText("Info: No puedes mover a esa posicion");
 
 	}

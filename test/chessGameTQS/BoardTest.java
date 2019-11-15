@@ -192,7 +192,8 @@ class BoardTest {
 		board.setSquare(s1);
 		board.setSquare(s2);
 		result = board.movePiece(s1, s2);
-		// assertFalse(result);
+		
+		assertFalse(result);
 
 		// Comprovar que la posicion inicial contiene aun el caballo
 		sResult = board.getSquare(4, 4);
@@ -204,6 +205,45 @@ class BoardTest {
 		sResult = board.getSquare(5, 5);
 		assertEquals(expectedNull, sResult);
 
+		
+		/*
+		 * CASO DONDE UNA PIEZA NO PUDE MOVERSE bloqueada por otras piezas
+		 * */
+		
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
+		}
+		
+		board.setSquare(new Square(new Queen(board.PLAYER_1), 3,3));
+		
+		board.setSquare(new Square(new Pawn(board.PLAYER_1), 4,3));
+		board.setSquare(new Square(new Pawn(board.PLAYER_1), 2,3));
+		board.setSquare(new Square(new Pawn(board.PLAYER_1), 3,4));
+		board.setSquare(new Square(new Pawn(board.PLAYER_1), 3,2));
+		
+		Square sOrigin = board.getSquare(3, 3);
+		Square sDest = board.getSquare(3, 7);
+		
+		result = board.movePiece(sOrigin, sDest);
+		
+		assertFalse(result);
+		
+		expected = new Square(new Queen(board.PLAYER_1), 3,3);
+		sResult = board.getSquare(3, 3);
+		
+		assertEquals(expected, sResult);
+		
+		expected = new Square(new Queen(board.PLAYER_1), 3,7);
+		sResult = board.getSquare(3, 7);
+		
+		assertNotEquals(expected, sResult);
+		
+		
 	}
 
 	@Test

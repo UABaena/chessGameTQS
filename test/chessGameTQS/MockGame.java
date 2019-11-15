@@ -1,7 +1,5 @@
 package chessGameTQS;
 
-import java.util.List;
-
 public class MockGame extends Game {
 
 	int n = 0;

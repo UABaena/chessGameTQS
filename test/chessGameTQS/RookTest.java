@@ -135,8 +135,7 @@ public class RookTest {
 		result = new ArrayList<Square>();
 		result = p.getPossibleMoves(board, 4, 0);
 		
-		System.out.println(result);
-		System.out.println(expectedResult);
+
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 		

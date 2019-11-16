@@ -23,6 +23,8 @@ public class GameTest {
 
 	@Test
 	public void testisJaque() {
+		
+		/** DEVELOP TDD **/
 
 		game = new Game();
 		Board b = game.getBoard();
@@ -73,6 +75,8 @@ public class GameTest {
 
 		result = game.isJaque();
 		// assertTrue(result)
+		
+		/** CONDITION COVERAGE **/
 
 	}
 

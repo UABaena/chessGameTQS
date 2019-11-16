@@ -36,5 +36,23 @@ public class PieceTest {
 		
 		
 	}
+	
+	@Test
+	public void testContructor() {
+		
+		Piece p = new King(Board.PLAYER_1);
+		
+		String sResult = p.getName();
+		String sExpected = "Rey";
+		
+		assertEquals(sResult, sExpected);
+		
+		int iResult = p.getPlayer();
+		int iExpected = Board.PLAYER_1;
+		
+		assertEquals(iResult, iExpected);
+		
+		
+	}
 
 }

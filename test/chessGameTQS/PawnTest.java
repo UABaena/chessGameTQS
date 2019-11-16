@@ -25,6 +25,9 @@ class PawnTest {
 	 */
 	@Test
 	void testPossiblesMovements() {
+		
+		
+		/** DESARROLLO CON TDD **/
 
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 
@@ -69,6 +72,7 @@ class PawnTest {
             assertArrayEquals(expectedResult.toArray(), result.toArray());
 
 		//El peon se encuentra en una posicion no inicial(Solo se puede mover una casilla)
+            
             Square sq10 = new Square(new Pawn(board.PLAYER_1),3, 1);
 
             board.setSquare(sq10);
@@ -103,8 +107,7 @@ class PawnTest {
             
             result = p.getPossibleMoves(board, 3, 1);
             
-            System.out.println(result);
-    		System.out.println(expectedResult);
+          
 
 		    assertArrayEquals(expectedResult.toArray(), result.toArray());
 
@@ -120,6 +123,126 @@ class PawnTest {
             
             assertFalse(Arrays.equals(expectedResult.toArray(), result.toArray()));
             
+            
+            /** COMPLETANDO STATEMENT COVERAGE **/
+			
+					
+					//PLAYER1
+            
+					for (int i = 0; i < board.NUM_ROWS; i++) {
+			
+						for (int j = 0; j < board.NUM_COLS; j++) {
+			
+							board.setSquare(new Square(null, i, j));
+			
+						}
+					}
+					
+					
+					sq1 = new Square(new Pawn(board.PLAYER_1), 1, 4);
+					board.setSquare(sq1);
+					
+					p = board.getSquare(1, 4).getPiece();
+					
+					// Ponemos peones enemigos en diagonal
+					
+					Square sq2 = new Square(new Pawn(board.PLAYER_2), 2, 3);
+					Square sq3 = new Square(new Pawn(board.PLAYER_2), 2, 5);
+					
+					board.setSquare(sq2);
+					board.setSquare(sq3);
+					
+					result = p.getPossibleMoves(board, 1, 4);
+					
+					expectedResult = new ArrayList<Square>();
+					
+					expectedSq1 = board.getSquare(2, 3);
+					expectedSq5 = board.getSquare(2, 5);
+					
+					expectedSq6 = board.getSquare(2, 4); 
+					expectedSq3 = board.getSquare(3, 4);
+					
+					expectedResult.add(expectedSq6);
+					expectedResult.add(expectedSq3);
+					expectedResult.add(expectedSq5);
+					expectedResult.add(expectedSq1);
+					
+					 System.out.println(result);
+			    	 System.out.println(expectedResult);
+					
+					assertArrayEquals(expectedResult.toArray(), result.toArray());
+					
+					//PLAYER2
+		            
+					for (int i = 0; i < board.NUM_ROWS; i++) {
+			
+						for (int j = 0; j < board.NUM_COLS; j++) {
+			
+							board.setSquare(new Square(null, i, j));
+			
+						}
+					}
+					
+					sq1 = new Square(new Pawn(board.PLAYER_2), 6, 4);
+					board.setSquare(sq1);
+					
+					p = board.getSquare(6, 4).getPiece();
+					
+					// Ponemos peones enemigos en diagonal
+					
+					sq2 = new Square(new Pawn(board.PLAYER_1), 5, 3);
+					sq3 = new Square(new Pawn(board.PLAYER_1), 5, 5);
+					
+					board.setSquare(sq2);
+					board.setSquare(sq3);
+					
+					result = p.getPossibleMoves(board, 6, 4);
+					
+					expectedResult = new ArrayList<Square>();
+					
+					expectedSq1 = board.getSquare(5, 3);
+					expectedSq5 = board.getSquare(5, 4);
+					
+					expectedSq6 = board.getSquare(5, 5); 
+					expectedSq3 = board.getSquare(4, 4);
+					
+					expectedResult.add(expectedSq5);
+					expectedResult.add(expectedSq3);
+					expectedResult.add(expectedSq6);
+					expectedResult.add(expectedSq1);
+					
+					 System.out.println(result);
+			    	 System.out.println(expectedResult);
+			    	 
+			    	
+					
+					assertArrayEquals(expectedResult.toArray(), result.toArray());
+					
+					//Mover el peon sacandolo de la posici�n inicial
+					
+					sq2 = new Square(new Pawn(board.PLAYER_2), 5, 4);
+					sq3 = new Square(null, 6, 4);
+					
+					board.setSquare(sq2);
+					board.setSquare(sq3);
+					
+					p = board.getSquare(5, 4).getPiece();
+					
+					
+					expectedResult = new ArrayList<Square>();
+					
+					expectedSq1 = board.getSquare(4, 4);
+					
+					expectedResult.add(expectedSq1);
+					
+					result = p.getPossibleMoves(board, 5, 4);
+					
+					
+					assertArrayEquals(expectedResult.toArray(), result.toArray());
+					
+					
+					
+		            
 
 	}
 

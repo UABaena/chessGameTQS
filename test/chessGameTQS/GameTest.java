@@ -2,6 +2,7 @@ package chessGameTQS;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -176,13 +177,70 @@ public class GameTest {
 		expected = new Square(new Knight(Board.PLAYER_1), 0, 1);
 		result = b.getSquare(0, 1);
 		assertEquals(expected, result);
-		
-		//El turno no ha cambiado
+
+		// El turno no ha cambiado
 		expectedTurn = b.PLAYER_1;
 		player = b.getPlayerTurn();
 		assertEquals(player, expectedTurn);
 
+		/*
+		 * Reset game
+		 */
+
+		String[] chars3 = { "d", "s", "s", "p", "w", "a", "p", "s", "p", "s", "s", "s", "s", "p", "w", "d", "s", "a",
+				"w", "p" };
+		game = new MockGame(chars3);
+		game.playTurn();
+		game.playTurn();
+		b = game.getBoard();
+
+		result = b.getSquare(2, 0);
+		expected = new Square(new Pawn(Board.PLAYER_1), 2, 0);
+		assertEquals(result, expected);
+
+		result = b.getSquare(5, 0);
+		expected = new Square(new Pawn(Board.PLAYER_2), 5, 0);
+		assertEquals(result, expected);
+
+		/* EQUIVOCARSE DE INPUT */
+		String[] chars4 = { "f" };
+		game = new MockGame(chars4);
+		game.playTurn();
+		b = game.getBoard();
+
+		result = b.getCursor();
+		expected = b.getSquare(0, 1);
+		assertNotEquals(result, expected);
+
+		/*
+		 * MOVER LA PIEZA DE OTRO JUGADOR Y ERROR AL INTRODUCIR EL DESTINO
+		 */
+
+		String[] chars5 = { "s", "s", "s", "s", "s", "s", "s", "p", "w", "w", "w", "w", "w", "w", "p", "f" };
+		game = new MockGame(chars5);
+		game.playTurn();
+		b = game.getBoard();
+
+		result = b.getCursor();
+		expected = b.getSquare(0, 1);
+		assertNotEquals(result, expected);
+
 		
+		System.out.println("JAQUE");
+		
+		
+		/* FORZANDO UN JAQUE */
+		String[] chars6 = { "d", "d", "d", "s", "p", "s", "s", "p", "s", "s", "s", "d", "p", "w", "p", "w", "w",
+				"w", "w", "w", "a", "a", "p", "d", "s", "d", "s", "d", "s", "d", "s", "p" };
+		game = new MockGame(chars6);
+		game.playTurn();
+		game.playTurn();
+		game.playTurn();
+		b = game.getBoard();
+
+		result = b.getCursor();
+		expected = b.getSquare(0, 1);
+		assertNotEquals(result, expected);
 
 	}
 

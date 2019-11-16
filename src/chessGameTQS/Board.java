@@ -82,6 +82,11 @@ public class Board {
 	}
 
 	public Square getSquare(int row, int col) {
+		
+		if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS ) {
+			
+			return null;
+		}
 		return board[row][col];
 	}
 
@@ -115,8 +120,17 @@ public class Board {
 	}
 
 	public void setSquare(Square sq) {
-
-		this.board[sq.getRow()][sq.getCol()] = sq;
+		
+		int row = sq.getRow();
+		int col = sq.getCol();
+		
+		if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS ) {
+			
+		}
+		else {
+			this.board[row][col] = sq;
+		}
+		
 
 	}
 

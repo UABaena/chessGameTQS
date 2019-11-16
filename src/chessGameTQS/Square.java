@@ -6,13 +6,7 @@ public class Square {
 	private int row = -1;
 	private int col = -1;
 
-	public Square() {
 
-	}
-
-	public Square(Piece p) {
-		this.piece = p;
-	}
 
 	public Square(Piece p, int r, int c) {
 		this.piece = p;

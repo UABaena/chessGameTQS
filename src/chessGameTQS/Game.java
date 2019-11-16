@@ -46,11 +46,10 @@ public class Game {
 
 		Square sKing;
 
-		for (int i = 0; i < board.NUM_ROWS; i++) {
-			for (int j = 0; j < board.NUM_COLS; j++) {
+		for (int i = 0; i < Board.NUM_ROWS; i++) {
+			for (int j = 0; j < Board.NUM_COLS; j++) {
 
-				if (board.getSquare(i, j).getPiece() != null
-						&& board.getSquare(i, j).getPiece().getPlayer() == board.getPlayerTurn()) {
+				if (board.getSquare(i, j).getPiece() != null) {
 
 					List<Square> result = board.getSquare(i, j).getPiece().getPossibleMoves(board, i, j);
 
@@ -77,8 +76,8 @@ public class Game {
 
 		int numKings = 0;
 
-		for (int i = 0; i < board.NUM_ROWS; i++) {
-			for (int j = 0; j < board.NUM_COLS; j++) {
+		for (int i = 0; i < Board.NUM_ROWS; i++) {
+			for (int j = 0; j < Board.NUM_COLS; j++) {
 
 				if (board.getSquare(i, j).getPiece() != null) {
 
@@ -95,21 +94,21 @@ public class Game {
 
 	public int getWinner() {
 
-		for (int i = 0; i < board.NUM_ROWS; i++) {
-			for (int j = 0; j < board.NUM_COLS; j++) {
+		for (int i = 0; i < Board.NUM_ROWS; i++) {
+			for (int j = 0; j < Board.NUM_COLS; j++) {
 
 				if (board.getSquare(i, j).getPiece() != null) {
 
 					if (board.getSquare(i, j).getPiece().getName() == "Rey"
-							&& board.getSquare(i, j).getPiece().getPlayer() == board.PLAYER_1)
-						return board.PLAYER_1;
+							&& board.getSquare(i, j).getPiece().getPlayer() == Board.PLAYER_1)
+						return Board.PLAYER_1;
 
 				}
 			}
 
 		}
 
-		return board.PLAYER_2;
+		return Board.PLAYER_2;
 	}
 
 	public void playTurn() {

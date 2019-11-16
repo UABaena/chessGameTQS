@@ -101,7 +101,7 @@ public class King extends Piece {
 		
 		col++;
 
-		if ( row < b.NUM_COLS ) {
+		if ( col < b.NUM_COLS ) {
 			Square s = b.getSquare(row, col);
 
 			Piece p = s.getPiece();

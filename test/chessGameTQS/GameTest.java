@@ -108,6 +108,8 @@ public class GameTest {
 	public void testgetWinner() {
 
 		// Esta funcion se ejecuta siempre cuando el juegue este acabado.
+		
+		/*** DECISION COVERAGE + CONDITION COVERAGE + STATEMENT COVERAGE***/
 
 		game = new Game();
 		Board b = game.getBoard();

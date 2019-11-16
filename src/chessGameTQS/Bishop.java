@@ -94,7 +94,9 @@ public class Bishop extends Piece {
 		col--;
 		continueAdding = true;
 		
-		while (row < b.NUM_ROWS && col >= 0 && continueAdding) {
+		while (row < b.NUM_ROWS 
+				&& col >= 0 
+				&& continueAdding) {
 			Square s = b.getSquare(row, col);
 
 			Piece p = s.getPiece();

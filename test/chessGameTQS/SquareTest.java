@@ -13,6 +13,9 @@ public class SquareTest {
 
 	@Test
 	public void testEquals() {
+		
+		/** STATETEMENT COVERAGE + DECISION CONDITIONAL **/
+		
 		/* Misma pieza  mismo lugar*/
 		Square p1 = new Square(new King(Board.PLAYER_1), 0, 0);
 		Square p2 = new Square(new King(Board.PLAYER_1), 0, 0);
@@ -46,6 +49,9 @@ public class SquareTest {
 		p1 = new Square(new King(Board.PLAYER_1), 0, 0);
 		p2 = new Square(new King(Board.PLAYER_2), 0, 0);
 		assertNotEquals(p1, p2);
+		
+		
+		/**  **/
 		
 		
 		

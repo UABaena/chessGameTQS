@@ -110,6 +110,8 @@ class BishopTest {
 		/*
 		 * RESET del tablero, caso sin piezas
 		 */
+		
+		/***** STATEMENT COVERAGE****/
 
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 

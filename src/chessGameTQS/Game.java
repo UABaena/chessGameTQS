@@ -99,8 +99,7 @@ public class Game {
 
 				if (board.getSquare(i, j).getPiece() != null) {
 
-					if (board.getSquare(i, j).getPiece().getName() == "Rey"
-							&& board.getSquare(i, j).getPiece().getPlayer() == Board.PLAYER_1)
+					if (board.getSquare(i, j).getPiece().getName() == "Rey" && board.getSquare(i, j).getPiece().getPlayer() == Board.PLAYER_1)
 						return Board.PLAYER_1;
 
 				}

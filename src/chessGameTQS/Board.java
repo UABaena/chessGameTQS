@@ -19,10 +19,6 @@ public class Board {
 	//
 	String extraText = "";
 
-	public String getExtraText() {
-		return extraText;
-	}
-
 	public void setExtraText(String extraText) {
 		this.extraText = extraText;
 	}

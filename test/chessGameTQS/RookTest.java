@@ -261,6 +261,8 @@ public class RookTest {
 		sq1 = new Square(new Queen(board.PLAYER_2), -1, 0);
 		board.setSquare(sq1);
 		
+		assertNotEquals(sq1,board.getSquare(-1, 0));
+		
 
 		
 	

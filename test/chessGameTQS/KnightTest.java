@@ -121,8 +121,7 @@ public class KnightTest {
 		expectedResult.add(expectedSq6);
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray()); // Debe ser un assert que sea false
-			
-		
+
 		/* Reset caballo rodeado de piezas enemigas */
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 
@@ -132,20 +131,19 @@ public class KnightTest {
 
 			}
 		}
-		
-		board.setSquare(new Square(new Knight(Board.PLAYER_1),4,4));
-		
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),2,5));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),2,3));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),6,5));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),6,3));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),5,2));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),3,2));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),5,6));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_2),3,6));
-		
-		
-		List <Square> listExpected = new ArrayList<Square>();
+
+		board.setSquare(new Square(new Knight(Board.PLAYER_1), 4, 4));
+
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 2, 5));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 2, 3));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 6, 5));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 6, 3));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 5, 2));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 3, 2));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 5, 6));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_2), 3, 6));
+
+		List<Square> listExpected = new ArrayList<Square>();
 		listExpected.add(board.getSquare(2, 3));
 		listExpected.add(board.getSquare(2, 5));
 		listExpected.add(board.getSquare(3, 6));
@@ -154,11 +152,10 @@ public class KnightTest {
 		listExpected.add(board.getSquare(5, 2));
 		listExpected.add(board.getSquare(6, 3));
 		listExpected.add(board.getSquare(6, 5));
-		List <Square> listResult  = board.getSquare(4, 4).getPiece().getPossibleMoves(board, 4, 4);
-		
+		List<Square> listResult = board.getSquare(4, 4).getPiece().getPossibleMoves(board, 4, 4);
+
 		assertArrayEquals(listExpected.toArray(), listResult.toArray());
-		
-		
+
 		/* Reset caballo rodeado de piezas enemigas */
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 
@@ -168,25 +165,124 @@ public class KnightTest {
 
 			}
 		}
-		
-		board.setSquare(new Square(new Knight(Board.PLAYER_1),4,4));
-		
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),2,5));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),2,3));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),6,5));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),6,3));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),5,2));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),3,2));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),5,6));
-		board.setSquare(new Square(new Pawn(Board.PLAYER_1),3,6));
-		
-		
+
+		board.setSquare(new Square(new Knight(Board.PLAYER_1), 4, 4));
+
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 2, 5));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 2, 3));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 6, 5));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 6, 3));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 5, 2));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 3, 2));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 5, 6));
+		board.setSquare(new Square(new Pawn(Board.PLAYER_1), 3, 6));
+
 		listExpected = new ArrayList<Square>();
-		listResult  = board.getSquare(4, 4).getPiece().getPossibleMoves(board, 4, 4);
-		
+		listResult = board.getSquare(4, 4).getPiece().getPossibleMoves(board, 4, 4);
+
 		assertArrayEquals(listExpected.toArray(), listResult.toArray());
-		
-		
+
+		/* Valores frontera */
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
+		}
+		int row = 0;
+		int col = 0;
+		sq1 = new Square(new Knight(board.PLAYER_2), row, col);
+		board.setSquare(sq1);
+
+		int expectedN = 2;
+		result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+
+		assertEquals(result.size(), expectedN);
+
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
+		}
+		row = 0;
+		col = 7;
+		sq1 = new Square(new Knight(board.PLAYER_1), row, col);
+		board.setSquare(sq1);
+
+		expectedN = 2;
+		result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+
+		assertEquals(result.size(), expectedN);
+
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
+		}
+		row = 7;
+		col = 0;
+		sq1 = new Square(new Knight(board.PLAYER_2), row, col);
+		board.setSquare(sq1);
+
+		expectedN = 2;
+		result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+
+		assertEquals(result.size(), expectedN);
+
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
+		}
+		row = 7;
+		col = 7;
+		sq1 = new Square(new Knight(board.PLAYER_1), row, col);
+		board.setSquare(sq1);
+
+		expectedN = 2;
+		result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+
+		assertEquals(result.size(), expectedN);
+
+		for (int i = 0; i < board.NUM_ROWS; i++) {
+
+			for (int j = 0; j < board.NUM_COLS; j++) {
+
+				board.setSquare(new Square(null, i, j));
+
+			}
+		}
+
+		board.setSquare(new Square(new Knight(Board.PLAYER_1), 0, 0));
+		p = board.getSquare(0, 0).getPiece();
+
+		result = p.getPossibleMoves(board, -1, -1);
+
+		assertNull(result);
+
+		result = p.getPossibleMoves(board, 10, 10);
+
+		assertNull(result);
+
+		result = p.getPossibleMoves(board, 1, -1);
+
+		assertNull(result);
+
+		result = p.getPossibleMoves(board, 1, 10);
+
+		assertNull(result);
+
 	}
 
 	@Test

@@ -244,7 +244,89 @@ class QueenTest {
 				
 				
 				assertArrayEquals(expectedResult.toArray(), result.toArray());
+				
 
+				for (int i = 0; i < board.NUM_ROWS; i++) {
+					
+					for (int j = 0; j < board.NUM_COLS; j++) {
+
+						board.setSquare(new Square(null, i, j));
+
+					}
+				}
+				int row = 0;
+				int col = 0;
+				sq1 = new Square(new Queen(board.PLAYER_2), row, col);
+				board.setSquare(sq1);
+				
+				int expectedN = 21;
+				result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+				
+				assertEquals(result.size(),expectedN);
+			
+				
+	            
+				
+				for (int i = 0; i < board.NUM_ROWS; i++) {
+					
+					for (int j = 0; j < board.NUM_COLS; j++) {
+
+						board.setSquare(new Square(null, i, j));
+
+					}
+				}
+				row = 0;
+				col = 7;
+				sq1 = new Square(new Queen(board.PLAYER_1), row, col);
+				board.setSquare(sq1);
+				
+				expectedN = 21;
+				result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+				
+				assertEquals(result.size(),expectedN);
+			
+
+				
+
+				for (int i = 0; i < board.NUM_ROWS; i++) {
+					
+					for (int j = 0; j < board.NUM_COLS; j++) {
+
+						board.setSquare(new Square(null, i, j));
+
+					}
+				}
+				row = 7;
+				col = 0;
+				sq1 = new Square(new Queen(board.PLAYER_2), row, col);
+				board.setSquare(sq1);
+				
+				expectedN = 21;
+				result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+				
+				assertEquals(result.size(),expectedN);
+			
+				
+	            
+				
+				for (int i = 0; i < board.NUM_ROWS; i++) {
+					
+					for (int j = 0; j < board.NUM_COLS; j++) {
+
+						board.setSquare(new Square(null, i, j));
+
+					}
+				}
+				row = 7;
+				col = 7;
+				sq1 = new Square(new Queen(board.PLAYER_1), row, col);
+				board.setSquare(sq1);
+				
+				expectedN = 21;
+				result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
+				
+				assertEquals(result.size(),expectedN);
+			
 	}
 	
 	@Test

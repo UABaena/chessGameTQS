@@ -54,5 +54,30 @@ public class PieceTest {
 		
 		
 	}
+	
+	@Test
+	public void testPossibleMoves() {
+		
+		/*** LOOP TESTING **/
+		
+		Board b = new Board();
+		Piece piece = b.getSquare(0, 0).getPiece();
+		
+		//Rows
+		
+		List<Square> result = piece.getPossibleMoves(b, -1, 1);
+		List<Square> result1 = piece.getPossibleMoves(b, 0, 1);
+		List<Square> result2 = piece.getPossibleMoves(b, 1, 1);
+		
+		List<Square> result3 = piece.getPossibleMoves(b, 4, 1);
+		
+		List<Square> result4 = piece.getPossibleMoves(b, 6, 1);
+		List<Square> result5 = piece.getPossibleMoves(b, 7, 1);
+		List<Square> result6 = piece.getPossibleMoves(b, 8, 1);
+		
+		
+		
+		
+	}
 
 }

@@ -110,8 +110,8 @@ class BishopTest {
 		/*
 		 * RESET del tablero, caso sin piezas
 		 */
-		
-		/***** STATEMENT COVERAGE****/
+
+		/***** STATEMENT COVERAGE ****/
 
 		for (int i = 0; i < board.NUM_ROWS; i++) {
 
@@ -122,9 +122,26 @@ class BishopTest {
 			}
 		}
 		
-		result = p.getPossibleMoves(board, -1, 0);
-		
+		//Condition Coverage
+
+		result = p.getPossibleMoves(board, -1, -1);
+
 		assertNull(result);
+		
+		result = p.getPossibleMoves(board, 10, 10);
+
+		assertNull(result);
+		
+		result = p.getPossibleMoves(board, 1, -1);
+
+		assertNull(result);
+		
+		result = p.getPossibleMoves(board, 1, 10);
+
+		assertNull(result);
+		
+		
+	
 
 		sq1 = new Square(new Bishop(board.PLAYER_2), 6, 3);
 
@@ -312,19 +329,16 @@ class BishopTest {
 
 	@Test
 	void testToString() {
-		
+
 		Piece p = new Bishop(Board.PLAYER_1);
 		String expected = "B";
 		String result = p.toString();
 		assertEquals(expected, result);
-		
+
 		p = new Bishop(Board.PLAYER_2);
 		expected = "b";
 		result = p.toString();
 		assertEquals(expected, result);
-		
-		
-		
-		
+
 	}
 }

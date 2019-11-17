@@ -112,9 +112,23 @@ class KingTest {
 			}
 		}
 		
-		result = p.getPossibleMoves(board, -1, 0);
-		
+		result = p.getPossibleMoves(board, -1, -1);
+
 		assertNull(result);
+		
+		result = p.getPossibleMoves(board, 10, 10);
+
+		assertNull(result);
+		
+		result = p.getPossibleMoves(board, 1, -1);
+
+		assertNull(result);
+		
+		result = p.getPossibleMoves(board, 1, 10);
+
+		assertNull(result);
+		
+	
 		
 		sq1 = new Square(new King(board.PLAYER_2), 1, 4);
 		board.setSquare(sq1);

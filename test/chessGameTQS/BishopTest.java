@@ -121,27 +121,24 @@ class BishopTest {
 
 			}
 		}
-		
-		//Condition Coverage
+
+		// Condition Coverage
 
 		result = p.getPossibleMoves(board, -1, -1);
 
 		assertNull(result);
-		
+
 		result = p.getPossibleMoves(board, 10, 10);
 
 		assertNull(result);
-		
+
 		result = p.getPossibleMoves(board, 1, -1);
 
 		assertNull(result);
-		
+
 		result = p.getPossibleMoves(board, 1, 10);
 
 		assertNull(result);
-		
-		
-	
 
 		sq1 = new Square(new Bishop(board.PLAYER_2), 6, 3);
 

@@ -111,25 +111,23 @@ class KingTest {
 
 			}
 		}
-		
+
 		result = p.getPossibleMoves(board, -1, -1);
 
 		assertNull(result);
-		
+
 		result = p.getPossibleMoves(board, 10, 10);
 
 		assertNull(result);
-		
+
 		result = p.getPossibleMoves(board, 1, -1);
 
 		assertNull(result);
-		
+
 		result = p.getPossibleMoves(board, 1, 10);
 
 		assertNull(result);
-		
-	
-		
+
 		sq1 = new Square(new King(board.PLAYER_2), 1, 4);
 		board.setSquare(sq1);
 
@@ -277,7 +275,7 @@ class KingTest {
 		result = board.getSquare(7, 0).getPiece().getPossibleMoves(board, 7, 0);
 
 		expectedResult = new ArrayList<Square>();
-	
+
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 
 		// Rey esquina derecha-arriba
@@ -305,7 +303,6 @@ class KingTest {
 		result = board.getSquare(0, 7).getPiece().getPossibleMoves(board, 0, 7);
 
 		expectedResult = new ArrayList<Square>();
-	
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 
@@ -334,16 +331,11 @@ class KingTest {
 		result = board.getSquare(7, 7).getPiece().getPossibleMoves(board, 7, 7);
 
 		expectedResult = new ArrayList<Square>();
-	
 
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 
-
-
-        
-		
 		for (int i = 0; i < board.NUM_ROWS; i++) {
-			
+
 			for (int j = 0; j < board.NUM_COLS; j++) {
 
 				board.setSquare(new Square(null, i, j));
@@ -354,13 +346,12 @@ class KingTest {
 		int col = 0;
 		sq1 = new Square(new King(board.PLAYER_1), row, col);
 		board.setSquare(sq1);
-		
+
 		int expectedN = 3;
 		result = board.getSquare(row, col).getPiece().getPossibleMoves(board, row, col);
-		
-		assertEquals(result.size(),expectedN);
-	
-		
+
+		assertEquals(result.size(), expectedN);
+
 	}
 
 	@Test

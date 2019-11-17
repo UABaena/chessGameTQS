@@ -36,24 +36,24 @@ public class Bishop extends Piece {
 			col--;
 			boolean continueAdding = true;
 
-				while (row >= 0 && col >= 0 && continueAdding) {
-					Square s = b.getSquare(row, col);
-	
-					Piece p = s.getPiece();
-	
-					continueAdding = false;
-	
-					if (p == null) { // Casilla vacia
+			while (row >= 0 && col >= 0 && continueAdding) {
+				Square s = b.getSquare(row, col);
+
+				Piece p = s.getPiece();
+
+				continueAdding = false;
+
+				if (p == null) { // Casilla vacia
+					list.add(s);
+					continueAdding = true;
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
 						list.add(s);
-						continueAdding = true;
-					} else {
-	
-						if (p.getPlayer() != this.player) { // Otro jugador
-							list.add(s);
-						}
-						}
-						row--;
-						col--;
+					}
+				}
+				row--;
+				col--;
 
 			}
 

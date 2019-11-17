@@ -9,245 +9,242 @@ public class Knight extends Piece {
 		this.name = "Caballo";
 		this.player = player;
 	}
-	
+
 	@Override
 	public String toString() {
-		
-		return (this.player == Board.PLAYER_1)?"N":"n";
-	
+
+		return (this.player == Board.PLAYER_1) ? "N" : "n";
+
 	}
-	
 
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
-		
-	if (r < 0 || r >= Board.NUM_ROWS || c < 0 || c >= Board.NUM_ROWS) {
-			
+
+		if (r < 0 || r >= Board.NUM_ROWS || c < 0 || c >= Board.NUM_ROWS) {
+
 			return null;
-			
-		}
-	else {
-		
 
+		} else {
 
-		int row = r, col = c;
-		List<Square> list = new ArrayList<Square>();
+			int row = r, col = c;
+			List<Square> list = new ArrayList<Square>();
 
-		// Arriba - Arriba - Izquierda
+			// Arriba - Arriba - Izquierda
 
-		row--;
-		row--;
-		col--;
+			row--;
+			row--;
+			col--;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row >= 0 && col >= 0) {
+			if (row >= 0 && col >= 0) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Arriba - Arriba - Derecha
+			// Arriba - Arriba - Derecha
 
-		row--;
-		row--;
-		col++;
+			row--;
+			row--;
+			col++;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row >= 0 && col < b.NUM_COLS) {
+			if (row >= 0 && col < b.NUM_COLS) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Derecha - Derecha - Arriba
+			// Derecha - Derecha - Arriba
 
-		col++;
-		col++;
-		row--;
+			col++;
+			col++;
+			row--;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row >= 0 && col < b.NUM_COLS) {
+			if (row >= 0 && col < b.NUM_COLS) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Derecha - Derecha - Abajo
+			// Derecha - Derecha - Abajo
 
-		col++;
-		col++;
-		row++;
+			col++;
+			col++;
+			row++;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row < b.NUM_ROWS && col < b.NUM_COLS) {
+			if (row < b.NUM_ROWS && col < b.NUM_COLS) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Izquierda - izquierda - Arriba
+			// Izquierda - izquierda - Arriba
 
-		col--;
-		col--;
-		row--;
+			col--;
+			col--;
+			row--;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row >= 0 && col >= 0) {
+			if (row >= 0 && col >= 0) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Izquierda - izquierda - Abajo
+			// Izquierda - izquierda - Abajo
 
-		col--;
-		col--;
-		row++;
+			col--;
+			col--;
+			row++;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row < b.NUM_ROWS && col >= 0) {
+			if (row < b.NUM_ROWS && col >= 0) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Abajo - Abajo - Izquierda
+			// Abajo - Abajo - Izquierda
 
-		row++;
-		row++;
-		col--;
+			row++;
+			row++;
+			col--;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row < b.NUM_ROWS && col >= 0) {
+			if (row < b.NUM_ROWS && col >= 0) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
-		}
 
-		row = r;
-		col = c;
+			row = r;
+			col = c;
 
-		// Abajo - Abajo - Derecha
+			// Abajo - Abajo - Derecha
 
-		row++;
-		row++;
-		col++;
+			row++;
+			row++;
+			col++;
 
-		/* Logica movimiento */
+			/* Logica movimiento */
 
-		if (row < b.NUM_ROWS && col < b.NUM_COLS) {
+			if (row < b.NUM_ROWS && col < b.NUM_COLS) {
 
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
 			}
+
+			row = r;
+			col = c;
+
+			return list;
 		}
-
-		row = r;
-		col = c;
-
-		return list;
-	}};
+	};
 }

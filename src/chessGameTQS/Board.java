@@ -82,9 +82,9 @@ public class Board {
 	}
 
 	public Square getSquare(int row, int col) {
-		
-		if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS ) {
-			
+
+		if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
+
 			return null;
 		}
 		return board[row][col];
@@ -99,8 +99,6 @@ public class Board {
 		List<Square> result = this.board[rowOrigin][colOrigin].getPiece().getPossibleMoves(this, rowOrigin, colOrigin);
 
 		for (Square sAux : result) {
-
-
 
 			if (sAux.equals(sDestination)) {
 
@@ -120,17 +118,15 @@ public class Board {
 	}
 
 	public void setSquare(Square sq) {
-		
+
 		int row = sq.getRow();
 		int col = sq.getCol();
-		
-		if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS ) {
-			
-		}
-		else {
+
+		if (row < 0 || row >= NUM_ROWS || col < 0 || col >= NUM_COLS) {
+
+		} else {
 			this.board[row][col] = sq;
 		}
-		
 
 	}
 
@@ -166,8 +162,6 @@ public class Board {
 		System.out.println("________________________________________");
 
 	}
-	
-
 
 	// Cursor Functions
 	public Square getCursor() {

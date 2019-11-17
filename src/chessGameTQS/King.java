@@ -8,245 +8,211 @@ public class King extends Piece {
 		this.name = "Rey";
 		this.player = player;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		
-		return (this.player == Board.PLAYER_1)?"K":"k";
-	
+
+		return (this.player == Board.PLAYER_1) ? "K" : "k";
+
 	}
-	
+
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
-		
-		
+
 		if (r < 0 || r >= Board.NUM_ROWS || c < 0 || c >= Board.NUM_ROWS) {
-			
+
 			return null;
-			
-		}else {
-			
-			
-			
-		
-		int row = r, col = c;
-		List<Square> list = new ArrayList<Square>();
 
+		} else {
 
-		// Probar Arriba
-		row--;
-		
-		
-		if (row >=0 ) {
-			
-			Square s = b.getSquare(row, col);
-			Piece p = s.getPiece();
+			int row = r, col = c;
+			List<Square> list = new ArrayList<Square>();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-			} else {
+			// Probar Arriba
+			row--;
 
-				if (p.getPlayer() != this.player) { // Otro jugador
+			if (row >= 0) {
+
+				Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
+
+				if (p == null) { // Casilla vacia
 					list.add(s);
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
-			}
-			
 
-		}
-		
-		// Probar Abajo
-		row = r;
-		col = c;
-		
-		row++;
-		
-		if (row < b.NUM_ROWS ) {
-			Square s = b.getSquare(row, col);
-
-			Piece p = s.getPiece();
-
-
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
-					list.add(s);
-				}
 			}
 
-		}
-		
-		
-		// Probar Izquierda
-		row = r;
-		col = c;
-		
-		col--;
+			// Probar Abajo
+			row = r;
+			col = c;
 
-		if (col >= 0) {
-			Square s = b.getSquare(row, col);
+			row++;
 
-			Piece p = s.getPiece();
+			if (row < b.NUM_ROWS) {
+				Square s = b.getSquare(row, col);
 
+				Piece p = s.getPiece();
 
-
-			if (p == null) { // Casilla vacia
-				list.add(s);
-	
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
+
 			}
+
+			// Probar Izquierda
+			row = r;
+			col = c;
+
 			col--;
 
-		}
-		
-		// Probar Derecha
-		row = r;
-		col = c;
-		
-		col++;
+			if (col >= 0) {
+				Square s = b.getSquare(row, col);
 
-		if ( col < b.NUM_COLS ) {
-			Square s = b.getSquare(row, col);
+				Piece p = s.getPiece();
 
-			Piece p = s.getPiece();
-
-	
-
-			if (p == null) { // Casilla vacia
-				list.add(s);
-	
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
-			}
-			
+				col--;
 
-		}
-		
-		// Probar Arriba-Izquierda
-		row = r;
-		col = c;
-		
-		row--;
-		col--;
-
-		
-		if(row >= 0 && col >= 0 ) {
-			Square s = b.getSquare(row, col);
-
-			Piece p = s.getPiece();
-
-	
-
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
-					list.add(s);
-				}
 			}
 
+			// Probar Derecha
+			row = r;
+			col = c;
 
-		}
-		
-		
-		
-		// Probar Arriba-Derecha
-		row = r;
-		col = c;
-		
-		row--;
-		col++;
-		
-		if(row >= 0 && col < b.NUM_COLS) {
-			Square s = b.getSquare(row, col);
+			col++;
 
-			Piece p = s.getPiece();
+			if (col < b.NUM_COLS) {
+				Square s = b.getSquare(row, col);
 
+				Piece p = s.getPiece();
 
-
-			if (p == null) { // Casilla vacia
-				list.add(s);
-
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
+
 			}
 
+			// Probar Arriba-Izquierda
+			row = r;
+			col = c;
 
-		}
-		
-		
-		// Probar Abajo-Izquierda
-		row = r;
-		col = c;
-		
-		row++;
-		col--;
-		
-		
-		if (row < b.NUM_ROWS && col >= 0 ) {
-			Square s = b.getSquare(row, col);
+			row--;
+			col--;
 
-			Piece p = s.getPiece();
+			if (row >= 0 && col >= 0) {
+				Square s = b.getSquare(row, col);
 
-	
+				Piece p = s.getPiece();
 
-			if (p == null) { // Casilla vacia
-				list.add(s);
-		
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
+
 			}
 
+			// Probar Arriba-Derecha
+			row = r;
+			col = c;
 
-		}
-		
-		// Probar Abajo-Derecha
-		row = r;
-		col = c;
-		
-		row++;
-		col++;
+			row--;
+			col++;
 
-		
-		if (row < b.NUM_ROWS && col < b.NUM_COLS) {
-			Square s = b.getSquare(row, col);
+			if (row >= 0 && col < b.NUM_COLS) {
+				Square s = b.getSquare(row, col);
 
-			Piece p = s.getPiece();
+				Piece p = s.getPiece();
 
-			
-
-			if (p == null) { // Casilla vacia
-				list.add(s);
-	
-			} else {
-
-				if (p.getPlayer() != this.player) { // Otro jugador
+				if (p == null) { // Casilla vacia
 					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
 				}
+
 			}
 
+			// Probar Abajo-Izquierda
+			row = r;
+			col = c;
+
+			row++;
+			col--;
+
+			if (row < b.NUM_ROWS && col >= 0) {
+				Square s = b.getSquare(row, col);
+
+				Piece p = s.getPiece();
+
+				if (p == null) { // Casilla vacia
+					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
+				}
+
+			}
+
+			// Probar Abajo-Derecha
+			row = r;
+			col = c;
+
+			row++;
+			col++;
+
+			if (row < b.NUM_ROWS && col < b.NUM_COLS) {
+				Square s = b.getSquare(row, col);
+
+				Piece p = s.getPiece();
+
+				if (p == null) { // Casilla vacia
+					list.add(s);
+
+				} else {
+
+					if (p.getPlayer() != this.player) { // Otro jugador
+						list.add(s);
+					}
+				}
+
+			}
+
+			return list;
 		}
-		
-		
-		
-		
-		return list;
-	}};
+	};
 }

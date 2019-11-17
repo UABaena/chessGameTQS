@@ -23,7 +23,7 @@ public class GameTest {
 
 	@Test
 	public void testisJaque() {
-		
+
 		/** DEVELOP TDD **/
 
 		game = new Game();
@@ -71,17 +71,14 @@ public class GameTest {
 		move = b.movePiece(sOrigin, sDestination);
 		assertTrue(move);
 
-	
-		
 		/** USING MOCK OBJECT **/
-		
+
 		// With Mock Object
-		
+
 		b = new MockBoard();
 		game.setBoard(b);
 		result = game.isJaque();
 		assertTrue(result);
-		
 
 	}
 
@@ -104,8 +101,6 @@ public class GameTest {
 		Square sq1 = new Square(null, 0, 3); // Posicion del rey
 		b.setSquare(sq1);
 
-	
-
 		result = game.isFinished();
 		assertTrue(result);
 
@@ -115,8 +110,8 @@ public class GameTest {
 	public void testgetWinner() {
 
 		// Esta funcion se ejecuta siempre cuando el juegue este acabado.
-		
-		/*** DECISION COVERAGE + CONDITION COVERAGE + STATEMENT COVERAGE***/
+
+		/*** DECISION COVERAGE + CONDITION COVERAGE + STATEMENT COVERAGE ***/
 
 		game = new Game();
 		Board b = game.getBoard();
@@ -238,13 +233,11 @@ public class GameTest {
 		expected = b.getSquare(0, 1);
 		assertNotEquals(result, expected);
 
-		
 		System.out.println("JAQUE");
-		
-		
+
 		/* FORZANDO UN JAQUE */
-		String[] chars6 = { "d", "d", "d", "s", "p", "s", "s", "p", "s", "s", "s", "d", "p", "w", "p", "w", "w",
-				"w", "w", "w", "a", "a", "p", "d", "s", "d", "s", "d", "s", "d", "s", "p" };
+		String[] chars6 = { "d", "d", "d", "s", "p", "s", "s", "p", "s", "s", "s", "d", "p", "w", "p", "w", "w", "w",
+				"w", "w", "a", "a", "p", "d", "s", "d", "s", "d", "s", "d", "s", "p" };
 		game = new MockGame(chars6);
 		game.playTurn();
 		game.playTurn();

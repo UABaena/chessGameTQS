@@ -18,9 +18,21 @@ public class Pawn extends Piece {
 	}
 
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
+		
+		
 
 		List<Square> list = new ArrayList<Square>();
-
+		
+		
+		if (r < 0 || r >= Board.NUM_ROWS || c < 0 || c >= Board.NUM_ROWS) {
+			
+			return null;
+			
+		}else {
+			
+			
+		
+		
 		int row = r, col = c;
 
 		if (this.player == b.PLAYER_1) {
@@ -129,6 +141,6 @@ public class Pawn extends Piece {
 
 		return list;
 
-	}
+	}}
 
 }

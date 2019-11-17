@@ -262,7 +262,7 @@ public class RookTest {
 		board.setSquare(sq1);
 		System.out.println(board.getSquare(-1, 0));
 		
-		assertNotEquals(board.getSquare(-1, 0),sq1);
+		assertNotEquals(board.getSquare(1,0),sq1);
 		
 
 		

@@ -19,7 +19,15 @@ public class Bishop extends Piece {
 
 	public List<Square> getPossibleMoves(Board b, int r, int c) {
 
-
+	if (r < 0 || r >= Board.NUM_ROWS || c < 0 || c >= Board.NUM_ROWS) {
+			
+			return null;
+			
+		}
+	else {
+		
+		
+	
 
 		int row = r, col = c;
 		List<Square> list = new ArrayList<Square>();
@@ -150,5 +158,5 @@ public class Bishop extends Piece {
 		
 		
 		return list;
-	};
+	}};
 }

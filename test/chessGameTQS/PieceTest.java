@@ -142,41 +142,59 @@ public class PieceTest {
 		
 		//Cols
 		
-		Piece piece2 = b.getSquare(0, 6).getPiece(); //Recuperamos Caballo Player 1
+		Piece piece2 = b.getSquare(0, 5).getPiece(); //Recuperamos Caballo Player 1
 		
 		expectedResult1 = new ArrayList<Square>();
 		
-		expectedResult1.add(b.getSquare(2, 2));
-		expectedResult1.add(b.getSquare(3, 1));
+		expectedResult1.add(b.getSquare(2, 1));
+		expectedResult1.add(b.getSquare(3, 2));
+		expectedResult1.add(b.getSquare(4, 3));
+		expectedResult1.add(b.getSquare(5, 4));
+		expectedResult1.add(b.getSquare(6, 5));
 		
 		expectedResult2 = new ArrayList<Square>();
 		
 		
-		expectedResult2.add(b.getSquare(2, 3));
-		expectedResult2.add(b.getSquare(3, 0));
-		expectedResult2.add(b.getSquare(3, 2));
+		expectedResult2.add(b.getSquare(2, 0));
+		expectedResult2.add(b.getSquare(2, 2));
+		expectedResult2.add(b.getSquare(3, 3));
+		expectedResult2.add(b.getSquare(4, 4));
+		expectedResult2.add(b.getSquare(5, 5));
+		expectedResult2.add(b.getSquare(6, 6));
 	
 		
 		expectedResult3 = new ArrayList<Square>();
 		
-		expectedResult3.add(b.getSquare(2, 6));
-		expectedResult3.add(b.getSquare(2, 2));
-		expectedResult3.add(b.getSquare(3, 3));
-		expectedResult3.add(b.getSquare(3, 5));
+		expectedResult3.add(b.getSquare(2, 3));
+		expectedResult3.add(b.getSquare(3, 2));
+		expectedResult3.add(b.getSquare(4, 1));
+		expectedResult3.add(b.getSquare(5, 0));
+		expectedResult3.add(b.getSquare(2, 5));
+		expectedResult3.add(b.getSquare(3, 6));
+		expectedResult3.add(b.getSquare(4, 7));
+
 
 		
 		expectedResult4 = new ArrayList<Square>();
 		
-		expectedResult4.add(b.getSquare(2, 4));
-		expectedResult4.add(b.getSquare(3, 5));
-		expectedResult4.add(b.getSquare(3, 7));
-
-
+		expectedResult4.add(b.getSquare(2, 5));
+		expectedResult4.add(b.getSquare(3, 4));
+		expectedResult4.add(b.getSquare(4, 3));
+		expectedResult4.add(b.getSquare(5, 2));
+		expectedResult4.add(b.getSquare(6, 1));
+		expectedResult4.add(b.getSquare(2, 7));
 		
+		
+		
+
 		expectedResult5 = new ArrayList<Square>();
 		
-		expectedResult5.add(b.getSquare(2, 5));
-		expectedResult5.add(b.getSquare(3, 6));
+		expectedResult5.add(b.getSquare(2, 6));
+		expectedResult5.add(b.getSquare(3, 5));
+		expectedResult5.add(b.getSquare(4, 4));
+		expectedResult5.add(b.getSquare(5, 3));
+		expectedResult5.add(b.getSquare(6, 2));
+		
 	
 		
 	

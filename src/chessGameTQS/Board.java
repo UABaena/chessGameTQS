@@ -11,11 +11,11 @@ public class Board {
 	public static int NUM_COLS = 8;
 	public static int NUM_ROWS = 8;
 	// Variable que determina el turno de una persona
-	private int playerTurn = PLAYER_1;
+	protected int playerTurn = PLAYER_1;
 
 	// Tablero de juego
-	private Square[][] board = new Square[NUM_ROWS][NUM_COLS];
-	private Square cursor;
+	protected Square[][] board = new Square[NUM_ROWS][NUM_COLS];
+	protected Square cursor;
 	//
 	String extraText = "";
 
@@ -166,6 +166,8 @@ public class Board {
 		System.out.println("________________________________________");
 
 	}
+	
+
 
 	// Cursor Functions
 	public Square getCursor() {

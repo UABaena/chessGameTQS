@@ -109,6 +109,12 @@ public class Game {
 
 		return Board.PLAYER_2;
 	}
+	
+	public void setBoard(Board b1) {
+
+		board = b1;
+
+	}
 
 	public void playTurn() {
 		origin = null;

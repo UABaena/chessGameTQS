@@ -4,6 +4,7 @@ public class MockGame extends Game {
 
 	int n = 0;
 	String[] chars;
+	
 
 	public MockGame(String[] string) {
 		
@@ -11,6 +12,14 @@ public class MockGame extends Game {
 		
 	}
 	
+
+	public MockGame() {
+		
+	
+		
+	}
+	
+
 	
 	public char getInput() {
 		
@@ -19,6 +28,7 @@ public class MockGame extends Game {
 		if (s.length() > 1) return 'e';
 		return s.charAt(0);
 	}
+	
 	
 	
 }

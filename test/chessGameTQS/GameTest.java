@@ -71,12 +71,17 @@ public class GameTest {
 		move = b.movePiece(sOrigin, sDestination);
 		assertTrue(move);
 
-		// Ahora deberia de existir un jaque
-
-		result = game.isJaque();
-		// assertTrue(result)
+	
 		
-		/** CONDITION COVERAGE **/
+		/** USING MOCK OBJECT **/
+		
+		// With Mock Object
+		
+		b = new MockBoard();
+		game.setBoard(b);
+		result = game.isJaque();
+		assertTrue(result);
+		
 
 	}
 
@@ -98,6 +103,8 @@ public class GameTest {
 
 		Square sq1 = new Square(null, 0, 3); // Posicion del rey
 		b.setSquare(sq1);
+
+	
 
 		result = game.isFinished();
 		assertTrue(result);

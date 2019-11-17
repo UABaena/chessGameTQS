@@ -121,6 +121,10 @@ class BishopTest {
 
 			}
 		}
+		
+		result = p.getPossibleMoves(board, -1, 0);
+		
+		assertNull(result);
 
 		sq1 = new Square(new Bishop(board.PLAYER_2), 6, 3);
 

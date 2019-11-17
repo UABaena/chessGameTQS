@@ -126,6 +126,10 @@ class QueenTest {
 					}
 				}
 				
+				result = p.getPossibleMoves(board, -1, 0);
+				
+				assertNull(result);
+				
 				sq1 = new Square(new Queen(board.PLAYER_2), 1, 4);
 				board.setSquare(sq1);
 				

@@ -245,25 +245,7 @@ public class RookTest {
 		assertArrayEquals(expectedResult.toArray(), result.toArray());
 		
 		
-		/*** LOOP TESTING ***/
-		
 
-		for (int i = 0; i < board.NUM_ROWS; i++) {
-			
-			for (int j = 0; j < board.NUM_COLS; j++) {
-
-				board.setSquare(new Square(null, i, j));
-
-			}
-		}
-		
-		//
-		sq1 = new Square(new Rook(board.PLAYER_2), -1, 0);
-		board.setSquare(sq1);
-		System.out.println(board.getSquare(-1, 0));
-		
-		assertNotEquals(board.getSquare(1,0),sq1);
-		
 
 		
 	

@@ -52,8 +52,19 @@ public class SquareTest {
 		
 		
 		/**  **/
+	
+	}
+	
+	@Test
+	public void getSquare() {
 		
+		Board b = new Board();
 		
+		assertNull(b.getSquare(-1, 0));
+		
+		Square p2 = new Square(new Rook(Board.PLAYER_1), 0, 0);
+		
+		assertEquals(b.getSquare(0, 0),p2);
 		
 		
 	}

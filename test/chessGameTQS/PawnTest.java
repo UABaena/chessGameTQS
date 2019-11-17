@@ -138,6 +138,11 @@ class PawnTest {
 						}
 					}
 					
+					//Probamos movimientos fuera del tablero
+					
+					result = p.getPossibleMoves(board, -1, 0);
+					
+					assertNull(result);
 					
 					sq1 = new Square(new Pawn(board.PLAYER_1), 1, 4);
 					board.setSquare(sq1);

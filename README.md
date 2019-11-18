@@ -1,6 +1,6 @@
 # Chess game
 
-## Claoses
+## Classes
 
 - Main
 - Piece
@@ -14,13 +14,13 @@
 - Board
 - Game
 
-##Git:
+## Git:
 
 Comment format
 [FEAT/BUG/TEST] class: Description
 
 
-##Eclipse shortcuts:
+## Eclipse shortcuts:
 	
 Hola,
 

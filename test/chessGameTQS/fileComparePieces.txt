@@ -1,0 +1,12 @@
+0 Rey 1 Rey False
+1 Rey 1 Rey True
+0 Alfil 1 Alfil False
+1 Alfil 1 Alfil True
+0 Caballo 1 Caballo False
+1 Caballo 1 Caballo True
+0 Torre 1 Torre False
+1 Torre 1 Torre True
+0 Reina 1 Reina False
+1 Reina 1 Reina True
+0 Peon 1 Peon False
+1 Peon 1 Peon True

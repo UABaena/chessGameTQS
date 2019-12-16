@@ -25,7 +25,7 @@ public class AutomatedTest {
 		
 		Board b = new Board();
 		Piece pawn = new Pawn(2); 
-		pawn = b.getSquare(1, 3).getPiece();		
+		pawn = b.getSquare(1, 3).getPiece();
 		
 		b.resetBoard();
 		List<Square> expectedResult = new ArrayList<Square>();
@@ -99,5 +99,69 @@ public class AutomatedTest {
         catch(IOException ex) {
             System.out.println("Error llegint el fitxer '" + fileName + "'");                  
         }
+	}
+	
+	/**
+	 * funcion auxiliar para crear constructores a partir de un parametro
+	 */
+	public Piece constructPiece(Integer numJugador,String piece) {
+		Piece result = null;
+		switch (piece) {
+			case "Rey":
+				result = new King(numJugador);
+				break;
+			case "Caballo":
+				result = new Knight(numJugador);
+				break;
+			case "Alfil":
+				result = new Bishop(numJugador);
+				break;
+			case "Peon":
+				result = new Pawn(numJugador);
+				break;
+			case "Reina":
+				result = new Queen(numJugador);
+				break;
+			case "Torre":
+				result = new Rook(numJugador);
+				break;
+		}
+		return result;
+	}
+	
+	@Test
+	void automatizedComparePieces() {
+
+		String path = "./test/chessGameTQS/";
+	    String fileName = path+"fileComparePieces.txt";    
+	    String linia = null;
+	    String[] partes;
+	    Piece a,c;
+		Boolean ciertoFalso,resultado;
+
+	    try {
+	        FileReader fileReader = new FileReader(fileName);
+	        BufferedReader bufferedReader = new BufferedReader(fileReader);
+	        while((linia = bufferedReader.readLine()) != null) {
+	        	partes = linia.split(" ");
+	        	a = constructPiece(Integer.parseInt(partes[0]),partes[1]);
+	        	c = constructPiece(Integer.parseInt(partes[2]),partes[3]);
+
+	        	ciertoFalso = Boolean.parseBoolean(partes[4]);
+	        	
+	        	resultado = a.equals(c);
+
+	        	assertEquals(resultado,ciertoFalso);
+	        }   
+	        bufferedReader.close();  
+	        fileReader.close();
+	    }
+	    catch(FileNotFoundException ex) {
+	    	System.out.println("No es pot obrir el fitxer: '" + fileName + "'");                
+	    }
+	    catch(IOException ex) {
+	        System.out.println("Error llegint el fitxer '" + fileName + "'");                  
+	    }
+		
 	}
 }

@@ -161,6 +161,97 @@ public class AutomatedTest {
 	    }
 		
 	}
+	
+	@Test
+	void automatizedMovPiece() {
+		Game game = new Game();
+		Board b = game.getBoard();
+		Piece k = new Knight(1);
+		k= b.getSquare(0, 1).getPiece();
+		Square sqO;
+		Square sqD;
+		
+		String path = "./test/chessGameTQS/";
+        String fileName = path+"fileMovPiece.txt";    
+        String linia = null;
+        String[] partes;
+        int aO,cO, aD, cD;
+        String ciertoFalso1, ciertoFalso2;
+
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while((linia = bufferedReader.readLine()) != null) {
+            	partes = linia.split(";");
+            	aO = Integer.parseInt(partes[0]);
+            	cO = Integer.parseInt(partes[1]);
+            	aD = Integer.parseInt(partes[2]);
+            	cD = Integer.parseInt(partes[3]);
+            	ciertoFalso1 = partes[4];
+            	ciertoFalso2 = partes[5];
+            	sqO = new Square(k, aO, cO);
+            	sqD = new Square(null, aD, cD);
+            	b.movePiece(sqO,sqD);
+            	sqO= b.getSquare(aO,cO);
+            	sqD= b.getSquare(aD,cD);
+          
+            	assertEquals(sqO.toString(),ciertoFalso1);
+            	assertEquals(sqD.toString(),ciertoFalso2);
+            	
+            }   
+            bufferedReader.close();  
+            fileReader.close();
+        }
+        catch(FileNotFoundException ex) {
+        }
+        catch(IOException ex) {
+            System.out.println("Error llegint el fitxer '" + fileName + "'");                  
+        }
+	}
+	
+	
+	@Test
+	void automatizedJaque() {
+		Game game = new Game();
+		Board b = game.getBoard();
+		Piece k = new Knight(1);
+		k= b.getSquare(0, 1).getPiece();
+		Square sq1;
+		
+		String path = "./test/chessGameTQS/";
+        String fileName = path+"fileJaque.txt";    
+        String linia = null;
+        String[] partes;
+        int a,c;
+        Boolean ciertoFalso,fin;
+
+        try {
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while((linia = bufferedReader.readLine()) != null) {
+            	partes = linia.split(";");
+            	a = Integer.parseInt(partes[0]);
+            	c = Integer.parseInt(partes[1]);
+            	ciertoFalso = Boolean.parseBoolean(partes[2].toLowerCase());
+            	
+            	sq1 = new Square(k, a, c);
+            	b.setSquare(sq1);
+            
+        		fin = game.isJaque();
+        		
+        		assertEquals(ciertoFalso,fin);
+
+            	
+            }   
+            bufferedReader.close();  
+            fileReader.close();
+        }
+        catch(FileNotFoundException ex) {
+        }
+        catch(IOException ex) {
+            System.out.println("Error llegint el fitxer '" + fileName + "'");                  
+        }
+	}
 
 @Test
 void automatizedCompareSquares() {

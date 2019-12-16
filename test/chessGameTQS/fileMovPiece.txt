@@ -1,0 +1,3 @@
+0;1;2;2;Pieza: null Fila: 0 Columna: 1;Pieza: N Fila: 2 Columna: 2
+2;2;3;4;Pieza: null Fila: 2 Columna: 2;Pieza: N Fila: 3 Columna: 4
+3;4;5;5;Pieza: null Fila: 3 Columna: 4;Pieza: N Fila: 5 Columna: 5

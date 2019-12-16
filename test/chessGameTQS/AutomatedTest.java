@@ -3,7 +3,6 @@ package chessGameTQS;
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -37,7 +36,6 @@ public class AutomatedTest {
         String linia = null;
         String[] partes;
         int a,c;
-
     	String ciertoFalso;
 
         try {
@@ -50,9 +48,7 @@ public class AutomatedTest {
             	ciertoFalso = partes[2];
             	
             	expectedResult = pawn.getPossibleMoves(b, a, c);
-            	
-            
-            	
+
             	try
             	{
             		assertEquals(expectedResult.toString(),ciertoFalso);

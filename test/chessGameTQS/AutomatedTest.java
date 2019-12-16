@@ -1,9 +1,6 @@
 package chessGameTQS;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -164,4 +161,40 @@ public class AutomatedTest {
 	    }
 		
 	}
+
+@Test
+void automatizedCompareSquares() {
+
+	String path = "./test/chessGameTQS/";
+    String fileName = path+"fileCompareSquares.txt";    
+    String linia = null;
+    String[] partes;
+    Square a,c;
+	Boolean ciertoFalso,resultado;
+
+    try {
+        FileReader fileReader = new FileReader(fileName);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        while((linia = bufferedReader.readLine()) != null) {
+        	partes = linia.split(" ");
+        	a = new Square(new King(Integer.parseInt(partes[0])),Integer.parseInt(partes[1]) , Integer.parseInt(partes[2]));
+        	c = new Square(new King(Integer.parseInt(partes[3])),Integer.parseInt(partes[4]) , Integer.parseInt(partes[5]));
+
+        	ciertoFalso = Boolean.parseBoolean(partes[6]);
+        	
+        	resultado = a.equals(c);
+
+        	assertEquals(resultado,ciertoFalso);
+        }   
+        bufferedReader.close();  
+        fileReader.close();
+    }
+    catch(FileNotFoundException ex) {
+    	System.out.println("No es pot obrir el fitxer: '" + fileName + "'");                
+    }
+    catch(IOException ex) {
+        System.out.println("Error llegint el fitxer '" + fileName + "'");                  
+    }
+	
+}
 }
